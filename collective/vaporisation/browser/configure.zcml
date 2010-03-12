@@ -1,0 +1,16 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="collective.vaporisation">
+
+  <include package="plone.app.contentmenu" />
+
+  <browser:page
+	 for="*"
+	 name="cloud_search"
+	 class=".search.CloudSearch"
+	 template="search.pt"
+	 permission="zope2.View"
+	 />
+
+</configure>

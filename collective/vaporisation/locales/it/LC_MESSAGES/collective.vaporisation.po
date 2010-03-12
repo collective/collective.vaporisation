@@ -1,0 +1,135 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2010-03-09 15:30+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: it\n"
+"Language-Name: Italian\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: collective.vaporisation\n"
+
+#: ./interfaces.py:70
+msgid "Activate joint navigation"
+msgstr "Attivare la navigazione connessa"
+
+#: ./portlets/customizabletagcloudportlet.py:237
+msgid "Cancel"
+msgstr "Elimina"
+
+#: ./portlets/customizabletagcloudportlet.py:231
+msgid "Changes saved and tagcloud updated."
+msgstr "Modifiche salvate e tagcloud aggiornato"
+
+#: ./interfaces.py:43
+msgid "Cloud reload timeout"
+msgstr "Tempo di ricarica del cloud"
+
+#: ./interfaces.py:54
+msgid "Indexes to use"
+msgstr "Indici da utilizzare"
+
+#: ./interfaces.py:71
+msgid "Joint navigation puts keywords together for associative searches."
+msgstr "La navigazione connessa mette insieme le parole chiave per eseguire ricerche associative."
+
+#: ./interfaces.py:78
+msgid "List of keywords to use in the cloud"
+msgstr "Lista delle parole chiave da usare nel cloud"
+
+#: ./interfaces.py:92
+msgid "Mode to use"
+msgstr "Modalita' di utilizzo"
+
+#: ./interfaces.py:23
+msgid "Name to display"
+msgstr "Nome da visualizzare"
+
+#: ./portlets/customizabletagcloudportlet.py:233
+msgid "No changes."
+msgstr "Nessuna modifica."
+
+#: ./interfaces.py:30
+msgid "Number of different sizes"
+msgstr "Numero di dimensioni differenti"
+
+#: ./interfaces.py:37
+msgid "Number of keywords to display"
+msgstr "Numero di parole chiave da visualizzare"
+
+#: ./interfaces.py:62
+msgid "Only the objects of this type will be counted."
+msgstr "Solo gli oggetti di questo tipo saranno contati."
+
+#: ./interfaces.py:49
+msgid "Only the objects under this directory will be counted. If empty, the portlet will search in all the site."
+msgstr "Solo gli oggetti sotto questa cartella saranno contati. Se vuoto, la portlet cerchera' in tutto il sito."
+
+#: ./interfaces.py:84
+msgid "Remove from keywords list"
+msgstr "Parole chiave da rimuovere"
+
+#: ./interfaces.py:85
+msgid "Restrict the cloud keywords by removing these keywords.If there is something selected in the list over, the values of that list will be ignored."
+msgstr "Limita le parole chiave di questo cloud togliendo queste parole chiave.Se si e' selezionato qualcosa nella lista sopra, i valori di questa lista saranno ignorati."
+
+#: ./portlets/customizabletagcloudportlet.py:225
+msgid "Save"
+msgstr "Salva"
+
+#: ./interfaces.py:55
+msgid "Select from the list the indexes to use for the cloud"
+msgstr "Selezionare dalla lista gli indici da usare nel cloud"
+
+#: ./interfaces.py:93
+msgid "Select one of the possible mode to use the cloud"
+msgstr "Selezionare uno dei possibili modi di utilizzo del cloud"
+
+#: ./interfaces.py:48
+msgid "Start path"
+msgstr "Percorso di partenza"
+
+#: ./interfaces.py:24
+msgid "The name of the tagcloud. For display purposes."
+msgstr "Il nome del tagcloud da visualizzare."
+
+#: ./interfaces.py:31
+msgid "This number will also determine the biggest size."
+msgstr "Questo numero determinera' anche la dimensione massima."
+
+#: ./interfaces.py:44
+msgid "Time in minutes after which the cloud should be reloaded."
+msgstr "Tempo in minuti dopo i quali sara' ricaricato il cloud."
+
+#: ./interfaces.py:61
+msgid "Type of contents"
+msgstr "Tipo di contenuti"
+
+#: ./interfaces.py:77
+msgid "Use only the keywords of this list"
+msgstr "Utilizza solo le parole chiave di questa lista"
+
+#: ./interfaces.py:38
+msgid "Zero displays it all."
+msgstr "Zero le mostra tutte."
+
+#. Default: "Joint navigation based on tags (click to remove) :"
+#: ./portlets/cloud.pt:47
+msgid "joint_navigation"
+msgstr "Navigazione basata su parole chiave (clicca per rimuovere) :"
+
+#. Default: "No related tags"
+#: ./portlets/cloud.pt:35
+msgid "no_related_tags"
+msgstr "Nessuna parola chiave associata"
+
+#. Default: "Actually searching on :"
+#: ./portlets/cloud.pt:61
+msgid "normal_navigation"
+msgstr "Attualmente in ricerca su :"
+

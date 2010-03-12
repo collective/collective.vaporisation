@@ -1,0 +1,21 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="collective.vaporisation">
+
+  <!-- Ensure Plone's portlets ZCML has already been processed;
+       without this, we may get a permission lookup error -->
+  <include package="plone.app.portlets" />
+
+  <plone:portlet
+      name="collective.vaporisation.tagcloud"
+      interface="collective.vaporisation.interfaces.IVaporizedCloud"
+      assignment=".customizabletagcloudportlet.Assignment"
+      view_permission="zope2.View"
+      edit_permission="cmf.ManagePortal"
+      renderer=".customizabletagcloudportlet.Renderer"
+      addview=".customizabletagcloudportlet.AddForm"
+      editview=".customizabletagcloudportlet.EditForm"
+      />
+
+</configure>

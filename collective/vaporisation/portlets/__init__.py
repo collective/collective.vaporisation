@@ -1,0 +1,1 @@
+from customizabletagcloudportlet import pseudoassignment
