@@ -110,7 +110,7 @@ class Renderer( base.Renderer ):
     def Title(self):
         return self.data.name
     
-#    @ram.cache(_cloud_key)
+    @ram.cache(_cloud_key)
     def render(self):
         adapter = getAdapter(self.data, ISteamer,self.data.mode_to_use)
         adapter.setTree()
