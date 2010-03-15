@@ -4,13 +4,17 @@ Changelog
 0.0.3-alfa (2010-03-12) 
 ------------------
 
-- It's created functionality to use the white list [mirco]
-- Added translate for italian [mirco]
-- Has been modified the generation of the urls for the search task [mirco]
+- It's created functionality to use the white list [mircoangelini]
+- Added translate for italian [mircoangelini]
+- Has been modified the generation of the urls for the search task [mircoangelini]
 - Has been modified the search to permit at the search of find all the object 
   that come from keyword present in more than one index. Now we use a method 
   that perform a multiple search in the catalog.
-  [mirco]
+  [mircoangelini]
+- Added to URL of the search the parameter "portlet" to identify the cloud 
+  portlet we are using. This is necessary when we have two portlet with the 
+  same keyword shown and we need to render only the used portlet.
+  [mircoangelini]
 
 0.0.2 (2010-03-03) 
 ------------------
@@ -19,16 +23,16 @@ Changelog
    - white_list (filter for the list of keywords, will show only this list), 
    - index_to_use (list of fields used to populate the cloud), 
    - mode_to_use (selector for some additional adapters)
-  [mirco]
+  [mircoangelini]
 - Modified some function to the behavior of the whole system. 
   Are now show the keywords of the fields selected in the relative list.
-  [mirco]
+  [mircoangelini]
 - Modified the updating system of cloud. 
   It's now used ram.cache with a number of minutes settable by user.
-  [mirco]
+  [mircoangelini]
 
 0.0.1 (2010-02-26) unreleased
 ------------------
 
 - First version with meging vaporisation and contextual.vaporisation
-  [mirco]
+  [mircoangelini]

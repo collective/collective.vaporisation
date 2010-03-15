@@ -110,7 +110,7 @@ class Renderer( base.Renderer ):
     def Title(self):
         return self.data.name
     
-    @ram.cache(_cloud_key)
+#    @ram.cache(_cloud_key)
     def render(self):
         adapter = getAdapter(self.data, ISteamer,self.data.mode_to_use)
         adapter.setTree()
@@ -123,17 +123,18 @@ class Renderer( base.Renderer ):
 
 
     def currentTags(self):
-        subjects = self.request.form.get('tags', None)
-        if subjects:
-
-            if isinstance(subjects, str):
-                subjects = (subjects,)
-            
-            encoding = self.encoding
-            self.subjects = [unicode(k, encoding)
-                             for k in subjects]
-        else:
-            self.subjects = list()
+        self.subjects = list()
+        portlet = self.request.form.get('portlet', None)
+        if portlet == self.data.__name__:
+            subjects = self.request.form.get('tags', None)
+            if subjects:
+    
+                if isinstance(subjects, str):
+                    subjects = (subjects,)
+                
+                encoding = self.encoding
+                self.subjects = [unicode(k, encoding)
+                                 for k in subjects]
         return self.subjects
 
     
@@ -148,7 +149,7 @@ class Renderer( base.Renderer ):
     def removableTags(self):  
         tags = (self.subjects is not None and self.subjects
                 or self.currentTags())
-
+        
         if not tags:
             return None
 
@@ -160,7 +161,7 @@ class Renderer( base.Renderer ):
         removable = list()
 
         for tag in tags:
-            base_url  = 'cloud_search?path=%s' % search_path
+            base_url  = 'cloud_search?portlet=%s&path=%s' % (self.data.__name__,search_path)
             query     = '%s/%s' % (self.context.absolute_url(), base_url)
             tag_url   = '&tags:list=%s'
             tags_url = ''.join([tag_url % k 
@@ -189,11 +190,12 @@ class Renderer( base.Renderer ):
     def getLinkPath(self, tag):
         search_path = self.getStartPath()
         link = "%s/cloud_search" % self.context.absolute_url()
+        portlet = self.request.form.get('portlet', None)
         query = self.request['QUERY_STRING']
-        if query:
+        if query and portlet == self.data.__name__:
             link = "%s?%s" % (link,query)
         else:
-            link = "%s?path=%s" % (link,search_path)
+            link = "%s?portlet=%s&path=%s" % (link,self.data.__name__,search_path)
         if tag['index']:
             index_url = "&%s:list=%s"
             indexes_url = "".join([index_url % (tag['name'], index) for index in tag['index']])
