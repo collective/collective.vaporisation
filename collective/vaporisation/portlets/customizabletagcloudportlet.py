@@ -72,9 +72,10 @@ class Assignment( base.Assignment ):
     white_list = tuple()
     mode_to_use = ('default',)
     timeout = 100
+    sort=False
 
     def __init__(self, name=u"", steps=10, joint=True, limit=0, restrict=(), startpath=None, type=tuple(), 
-                 indexes_to_use=('Subject',),white_list=tuple(),mode_to_use=('default'),timeout=100):
+                 indexes_to_use=('Subject',),white_list=tuple(),mode_to_use=('default'),timeout=100,sort=False):
         self.name = name
         self.steps = steps
         self.joint = joint
@@ -86,6 +87,7 @@ class Assignment( base.Assignment ):
         self.white_list = white_list
         self.mode_to_use = mode_to_use
         self.timeout = timeout
+        self.sort=False
     
     @property
     def title(self):
@@ -143,7 +145,10 @@ class Renderer( base.Renderer ):
                     and self.subjects
                     or self.currentTags())
         adapter = getAdapter(self.data, ISteamer,self.data.mode_to_use)
-        return adapter.getVaporizedCloudFor(subjects)
+        tags=adapter.getVaporizedCloudFor(subjects)
+        if self.data.sort:
+            tags.sort(lambda x,y:cmp(x.get('name').lower(),y.get('name').lower()))
+        return tags
 
 
     def removableTags(self):  

@@ -30,6 +30,10 @@ msgstr "Modifiche salvate e tagcloud aggiornato"
 msgid "Cloud reload timeout"
 msgstr "Tempo di ricarica del cloud"
 
+#: ./interfaces.py:103
+msgid "If selected, the keywords will be sorted alphabetically."
+msgstr "Se selezionato, le parole chiave saranno ordinate alfabeticamente."
+
 #: ./interfaces.py:54
 msgid "Indexes to use"
 msgstr "Indici da utilizzare"
@@ -89,6 +93,10 @@ msgstr "Selezionare dalla lista gli indici da usare nel cloud"
 #: ./interfaces.py:93
 msgid "Select one of the possible mode to use the cloud"
 msgstr "Selezionare uno dei possibili modi di utilizzo del cloud"
+
+#: ./interfaces.py:102
+msgid "Sort keywords"
+msgstr "Ordina le parole chiave"
 
 #: ./interfaces.py:48
 msgid "Start path"
