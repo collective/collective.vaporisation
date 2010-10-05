@@ -5,7 +5,7 @@ This module contains the tool of collective.vaporisation
 import os
 from setuptools import setup, find_packages
 
-version = '1.0.1'
+version = '1.1.0'
 
 tests_require=['zope.testing']
 

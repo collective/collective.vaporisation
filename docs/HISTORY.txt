@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.0.1 (2010-10-05)
+1.1.0 (2010-10-05)
 ------------------
 
 - added flag to sort keywords [micecchi]

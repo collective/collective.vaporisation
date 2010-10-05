@@ -72,10 +72,10 @@ class Assignment( base.Assignment ):
     white_list = tuple()
     mode_to_use = ('default',)
     timeout = 100
-    sort=False
+    sort=True
 
     def __init__(self, name=u"", steps=10, joint=True, limit=0, restrict=(), startpath=None, type=tuple(), 
-                 indexes_to_use=('Subject',),white_list=tuple(),mode_to_use=('default'),timeout=100,sort=False):
+                 indexes_to_use=('Subject',),white_list=tuple(),mode_to_use=('default'),timeout=100,sort=True):
         self.name = name
         self.steps = steps
         self.joint = joint
@@ -87,7 +87,7 @@ class Assignment( base.Assignment ):
         self.white_list = white_list
         self.mode_to_use = mode_to_use
         self.timeout = timeout
-        self.sort=False
+        self.sort=True
     
     @property
     def title(self):

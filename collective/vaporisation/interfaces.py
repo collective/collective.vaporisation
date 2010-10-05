@@ -96,6 +96,13 @@ class ICustomizableCloud( Interface ):
         default=('default',),
         )
     
+    sort = Bool(
+        default=True,
+        required=False,
+        title=_(u"Sort keywords"),
+        description=_(u"If selected, the keywords will be sorted alphabetically.")
+        )
+    
 class IVaporizedCloud(ICustomizableCloud):
     """
     A cloudy bunch of keywords
