@@ -95,7 +95,7 @@ class Steamer(object):
         tags = self.context.tagsTree
         for keyword in keywords:
             if keyword in self.context.tagsTree:
-                self.context.tagsTree[keyword]['weight'] += 1
+#                self.context.tagsTree[keyword]['weight'] += 1
                 addition = [k for k in keywords
                             if k != keyword and
                             k not in self.context.tagsTree[keyword]['connections']]
@@ -109,7 +109,7 @@ class Steamer(object):
                            index = [index])
                 self.context.tagsTree[keyword] = tag
 
-            self.updateWitnessWeights(self.context.tagsTree[keyword]['weight'])
+#            self.updateWitnessWeights(self.context.tagsTree[keyword]['weight'])
         self.context.tagsTree = tags
 
 
@@ -142,6 +142,7 @@ class Steamer(object):
         encoding = putils.getSiteEncoding()
 
         self.context.tagsTree = dict()
+        weights = {}
         root_path= ('/').join(portalurl.getPortalObject().getPhysicalPath())
         
         if self.context.data.startpath:
@@ -183,6 +184,15 @@ class Steamer(object):
                     if callable(obj_keywords):
                         obj_keywords=obj_keywords()
                     allowed_keywords=set(obj_keywords).intersection(keywords)
+                    obj_uid = obj.UID
+                    if callable(obj_uid):
+                        obj_uid = obj_uid()
+                    for k in allowed_keywords:
+                        if k in weights.keys():
+                            if not obj_uid in weights[k]:
+                                weights[k].append(obj_uid)
+                        else:
+                            weights[k] = [obj_uid,]
                     self.updateTree(index,
                                     [unicode(k, encoding) 
                                      for k in allowed_keywords])
@@ -195,13 +205,29 @@ class Steamer(object):
                         if callable(obj_keywords):
                             obj_keywords=obj_keywords()
                         allowed_keywords=set(obj_keywords).intersection(keywords)
+                        obj_uid = obj.UID
+                        if callable(obj_uid):
+                            obj_uid = obj_uid()
+                        for k in allowed_keywords:
+                            if k in weights.keys():
+                                if not obj_uid in weights[k]:
+                                    weights[k].append(obj_uid)
+                            else:
+                                weights[k] = [obj_uid,]
                         self.updateTree(index,
                                         [unicode(k, encoding) 
                                          for k in allowed_keywords])
-
+        self.updateWeightsTree(weights)
         self.restrictTree()
         
-            
+    def updateWeightsTree(self,weights):
+        """
+        Update the Tagcloud Tree with the weights
+        """
+        for k in weights:
+            self.context.tagsTree[k]['weight'] = len(weights[k])
+            self.updateWitnessWeights(self.context.tagsTree[k]['weight'])
+                     
             
     def _generateCloudRelationSet(self, tags):
         """Generate a set of relations for a set of tags.

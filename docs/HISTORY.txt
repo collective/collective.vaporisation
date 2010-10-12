@@ -5,6 +5,10 @@ Changelog
 ------------------
 
 - you can now put "0" in portlet cache (highly unefficient) [keul]
+- fixed the weight of the keywords; now doesn't counts the same object more than one 
+  time even if the same keyword it's used in more than one index
+  [mircoangelini]
+- added to the cache key a new parameter: the id of user [mircoangelini]
 
 1.1.0 (2010-10-05)
 ------------------
