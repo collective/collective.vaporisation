@@ -6,7 +6,7 @@ Changelog
 
 - you can now put "0" in portlet cache (highly unefficient) [keul]
 - fixed the weight of the keywords; now doesn't counts the same object more than one 
-  time even if the same keyword it's used in more than one index
+  time even if the same keyword is used in more than one index
   [mircoangelini]
 - added to the cache key a new parameter: the id of user [mircoangelini]
 
@@ -18,40 +18,39 @@ Changelog
 1.0.0 (2010-10-01)
 ------------------
 
-- release version [mircoangelini]
+- moved on Plone SVN [mircoangelini]
 
-0.0.3-alfa (2010-03-12) 
-------------------
+0.0.3-alfa (Unreleased) 
+-----------------------
 
-- It's created functionality to use the white list [mircoangelini]
-- Added translate for italian [mircoangelini]
-- Has been modified the generation of the urls for the search task [mircoangelini]
-- Has been modified the search to permit at the search of find all the object 
+- aded feature: type white list [mircoangelini]
+- added italian translation [mircoangelini]
+- modified the generation of URLs for the search task [mircoangelini]
+- modified the search to permit at the search of find all the object 
   that come from keyword present in more than one index. Now we use a method 
   that perform a multiple search in the catalog.
   [mircoangelini]
-- Added to URL of the search the parameter "portlet" to identify the cloud 
+- added to URL of the search the parameter "portlet" to identify the cloud 
   portlet we are using. This is necessary when we have two portlet with the 
   same keyword shown and we need to render only the used portlet.
   [mircoangelini]
 
-0.0.2 (2010-03-03) 
+0.0.2 (Unreleased)
 ------------------
 
-- Inserted into portlet's schema the fields: 
-   - white_list (filter for the list of keywords, will show only this list), 
-   - index_to_use (list of fields used to populate the cloud), 
-   - mode_to_use (selector for some additional adapters)
+- added into portlet's schema fields *white_list* (filter for the list of keywords),
+  *index_to_use* (list of fields used to populate the cloud), *mode_to_use* (selector
+  for some additional adapters)
   [mircoangelini]
-- Modified some function to the behavior of the whole system. 
+- modified some function to the behavior of the whole system. 
   Are now show the keywords of the fields selected in the relative list.
   [mircoangelini]
-- Modified the updating system of cloud. 
-  It's now used ram.cache with a number of minutes settable by user.
+- modified the updating system of cloud. 
+  It's now used *ram.cache* with a number of minutes customizable by user.
   [mircoangelini]
 
-0.0.1 (2010-02-26) unreleased
+0.0.1 (Unreleased) 
 ------------------
 
-- First version with meging vaporisation and contextual.vaporisation
+- First version: merging vaporisation and contextual.vaporisation
   [mircoangelini]
