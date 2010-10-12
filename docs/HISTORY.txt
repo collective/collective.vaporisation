@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.1.1 (Unreleased)
+1.1.1 (2010-10-12)
 ------------------
 
 - you can now put "0" in portlet cache (highly unefficient) [keul]
