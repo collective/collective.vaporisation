@@ -5,7 +5,7 @@ This module contains the tool of collective.vaporisation
 import os
 from setuptools import setup, find_packages
 
-version = '1.1.0'
+version = '1.1.1dev'
 
 tests_require=['zope.testing']
 
@@ -21,8 +21,8 @@ setup(name='collective.vaporisation',
         'License :: OSI Approved :: GNU General Public License (GPL)',
         ],
       keywords='',
-      author='Plone Foundation',
-      author_email='plone-developers@lists.sourceforge.net',
+      author='RedTurtle Technology',
+      author_email='sviluppoplone@redturtle.net',
       url='http://svn.plone.org/svn/plone/plone.example',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
@@ -40,6 +40,4 @@ setup(name='collective.vaporisation',
       [z3c.autoinclude.plugin]
       target = plone
       """,
-      setup_requires=["PasteScript"],
-      paster_plugins = ["ZopeSkel"],
       )

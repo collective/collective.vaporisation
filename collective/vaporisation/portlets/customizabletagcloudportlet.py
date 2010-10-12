@@ -25,6 +25,8 @@ from time import time
 
 
 def _cloud_key(method, self):
+    if not self.data.timeout:
+        return time()
     timestamp = time() // (60 * self.data.timeout)
     params =  "%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s" % (self.data.name,
                                                 self.data.steps,
@@ -116,8 +118,9 @@ class Renderer( base.Renderer ):
     def render(self):
         adapter = getAdapter(self.data, ISteamer,self.data.mode_to_use)
         adapter.setTree()
-        logger.info('Tagcloud "%s" has been updated (%s)'
-                    % (self.data.name, DateTime()))
+        if self.data.timeout:
+            logger.info('Tagcloud "%s" has been updated (%s)'
+                        % (self.data.name, DateTime()))
         return self._template()
 
     def isJointNavigation(self):
