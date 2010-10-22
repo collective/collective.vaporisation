@@ -31,7 +31,7 @@ def _cloud_key(method, self):
     user_id = self.context.portal_membership.getAuthenticatedMember().getId()
     if not user_id:
         user_id = 'anonymous'
-    params =  "%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s" % (self.data.name,
+    params =  "%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s" % (self.data.name,
                                                 self.data.steps,
                                                 self.data.joint,
                                                 self.data.limit,
@@ -41,7 +41,6 @@ def _cloud_key(method, self):
                                                 self.data.indexes_to_use,
                                                 self.data.white_list,
                                                 self.data.mode_to_use,
-                                                self.request.URL,
                                                 self.request.QUERY_STRING,
                                                 str(user_id),
                                                 str(self.data.timeout))
