@@ -184,6 +184,7 @@ class Steamer(object):
                     if callable(obj_keywords):
                         obj_keywords=obj_keywords()
                     allowed_keywords=set(obj_keywords).intersection(keywords)
+                    allowed_keywords=[unicode(k, encoding) for k in allowed_keywords]
                     obj_uid = obj.UID
                     if callable(obj_uid):
                         obj_uid = obj_uid()
@@ -193,9 +194,7 @@ class Steamer(object):
                                 weights[k].append(obj_uid)
                         else:
                             weights[k] = [obj_uid,]
-                    self.updateTree(index,
-                                    [unicode(k, encoding) 
-                                     for k in allowed_keywords])
+                    self.updateTree(index,allowed_keywords)
             else:
                 index_sources = catalog._catalog.indexes[index].getIndexSourceNames()
                 for index_source in index_sources:
@@ -205,6 +204,7 @@ class Steamer(object):
                         if callable(obj_keywords):
                             obj_keywords=obj_keywords()
                         allowed_keywords=set(obj_keywords).intersection(keywords)
+                        allowed_keywords=[unicode(k, encoding) for k in allowed_keywords]
                         obj_uid = obj.UID
                         if callable(obj_uid):
                             obj_uid = obj_uid()
@@ -214,9 +214,7 @@ class Steamer(object):
                                     weights[k].append(obj_uid)
                             else:
                                 weights[k] = [obj_uid,]
-                        self.updateTree(index,
-                                        [unicode(k, encoding) 
-                                         for k in allowed_keywords])
+                        self.updateTree(index,allowed_keywords)
         self.updateWeightsTree(weights)
         self.restrictTree()
         

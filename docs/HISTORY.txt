@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.1.2 (2010-10-27)
+------------------
+
+- fix unicode bug in computing of weights [mircoangelini]
+
 1.1.1 (2010-10-12)
 ------------------
 
