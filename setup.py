@@ -11,16 +11,17 @@ tests_require=['zope.testing']
 
 setup(name='collective.vaporisation',
       version=version,
-      description="",
+      description="Plone portlet for vaporisation tagcloud",
       long_description=open("README.txt").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
         'Framework :: Plone',
+        "Development Status :: 4 - Beta",
         'Intended Audience :: Developers',
         'License :: OSI Approved :: GNU General Public License (GPL)',
         ],
-      keywords='',
+      keywords='plone plonegov vaporisation tag-cloud portlet',
       author='RedTurtle Technology',
       author_email='sviluppoplone@redturtle.net',
       url='https://svn.plone.org/svn/collective/collective.vaporisation',

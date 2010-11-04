@@ -23,7 +23,7 @@ Changelog
 1.0.0 (2010-10-01)
 ------------------
 
-- moved on Plone SVN [mircoangelini]
+- moved on collective SVN [mircoangelini]
 
 0.0.3-alfa (2010-03-12) 
 -----------------------
