@@ -72,13 +72,13 @@ ToDo and tricks of usage
 Credits
 =======
 
-Developed with the support of `Rete Civica Mo-Net - Comune di Modena `__; Rete Civica Mo-Net - Comune di Modena  supports the `PloneGov initiative`__.
+Developed with the support of `Rete Civica Mo-Net - Comune di Modena`__; Rete Civica Mo-Net - Comune di Modena supports the `PloneGov initiative`__.
 
 .. image:: http://www.comune.modena.it/grafica/logoComune/logoComunexweb.jpg 
    :alt: Comune di Modena's logo
 
-.. __http://www.comune.modena.it/
-.. __http://www.plonegov.it/
+__ http://www.comune.modena.it/
+__ http://www.plonegov.it/
 
 Authors
 =======
@@ -89,9 +89,9 @@ This product was developed by RedTurtle Technology team.
    :alt: RedTurtle Technology Site
    :target: http://www.redturtle.net/
 
-Original idea and code came from Souheil Shelfouh, that made `vaporisation` product
+Original idea and code came from Souheil Shelfouh, that made `vaporisation`__ product
 
-.. __http://plone.org/products/vaporisation
+__ http://plone.org/products/vaporisation
 
 
 
