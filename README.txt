@@ -77,8 +77,8 @@ Developed with the support of `Rete Civica Mo-Net - Comune di Modena `__; Rete C
 .. image:: http://www.comune.modena.it/grafica/logoComune/logoComunexweb.jpg 
    :alt: Comune di Modena's logo
 
-__ http://www.comune.modena.it/
-__ http://www.plonegov.it/
+.. __http://www.comune.modena.it/
+.. __http://www.plonegov.it/
 
 Authors
 =======
@@ -88,6 +88,10 @@ This product was developed by RedTurtle Technology team.
 .. image:: http://www.redturtle.net/redturtle_banner.png
    :alt: RedTurtle Technology Site
    :target: http://www.redturtle.net/
+
+Original idea and code came from Souheil Shelfouh, that made `vaporisation` product
+
+.. __http://plone.org/products/vaporisation
 
 
 
