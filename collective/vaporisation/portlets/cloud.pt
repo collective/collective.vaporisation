@@ -1,6 +1,6 @@
 <dl class="portlet portlet-tagcloud"
     i18n:domain="collective.vaporisation"
-    tal:attributes="id string:portlet-${context/getId}"
+    tal:attributes="id string:portlet-tagcloud-${view/generatedId}"
     tal:define="joint view/isJointNavigation;
 		currents view/currentTags;
 		removable view/removableTags;">

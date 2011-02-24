@@ -113,6 +113,11 @@ class Renderer( base.Renderer ):
         self.encoding = putils.getSiteEncoding()
         self.purl = getToolByName(context, 'portal_url')()
 
+    def generatedId(self):
+        """get a unique portlet id, base on the portlet context"""
+        context = self.context
+        putils = getToolByName(context, 'plone_utils')
+        return putils.normalizeString(self.data.title)
 
     def Title(self):
         return self.data.name
@@ -200,7 +205,9 @@ class Renderer( base.Renderer ):
     
     def getLinkPath(self, tag):
         search_path = self.getStartPath()
-        link = "%s/cloud_search" % self.context.absolute_url()
+        portal = getToolByName(self.context, 'portal_url').getPortalObject()
+        cloudContext = portal.unrestrictedTraverse(self.getStartPath())
+        link = "%s/cloud_search" % cloudContext.absolute_url()
         portlet = self.request.form.get('portlet', None)
         query = self.request['QUERY_STRING']
         if query and portlet == self.data.__name__:

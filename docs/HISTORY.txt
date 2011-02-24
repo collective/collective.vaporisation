@@ -1,6 +1,15 @@
 Changelog
 =========
 
+1.2.0 (Unreleased)
+------------------
+
+- fix XHTML Strict bug when the current context has a non-prettified id [keul]
+- tagcloud id now is generated starting from the given title, not from the
+  title of the current context (that was nonsense) [keul]
+- the search view is now called on the portlet context, not actual context.
+  This was cache-killer [keul]
+
 1.1.3 (2010-11-11)
 ------------------
 
@@ -30,37 +39,3 @@ Changelog
 
 - moved on collective SVN [mircoangelini]
 
-0.0.3-alfa (2010-03-12) 
------------------------
-
-- aded feature: type white list [mircoangelini]
-- added italian translation [mircoangelini]
-- modified the generation of URLs for the search task [mircoangelini]
-- modified the search to permit at the search of find all the object 
-  that come from keyword present in more than one index. Now we use a method 
-  that perform a multiple search in the catalog.
-  [mircoangelini]
-- added to URL of the search the parameter "portlet" to identify the cloud 
-  portlet we are using. This is necessary when we have two portlet with the 
-  same keyword shown and we need to render only the used portlet.
-  [mircoangelini]
-
-0.0.2 (Unreleased)
-------------------
-
-- added into portlet's schema fields *white_list* (filter for the list of keywords),
-  *index_to_use* (list of fields used to populate the cloud), *mode_to_use* (selector
-  for some additional adapters)
-  [mircoangelini]
-- modified some function to the behavior of the whole system. 
-  Are now show the keywords of the fields selected in the relative list.
-  [mircoangelini]
-- modified the updating system of cloud. 
-  It's now used *ram.cache* with a number of minutes customizable by user.
-  [mircoangelini]
-
-0.0.1 (Unreleased) 
-------------------------------
-
-- First version: merging vaporisation and contextual.vaporisation
-  [mircoangelini]
