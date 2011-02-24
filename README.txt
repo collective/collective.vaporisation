@@ -61,7 +61,7 @@ We see in detail what they do:
      through an adapter.
 `Sort keywords`
      If actived, the keywords will be sorted alphabetically.
- 
+
 TODO and tricks of usage
 ========================
 
@@ -73,7 +73,12 @@ TODO and tricks of usage
   re-enter into edit.
   
   During the load of edit form the vocabularies will be recreated.
-   
+
+Dependencies
+============
+
+This product run on Plone 3 and Plone 4
+
 Credits
 =======
 

@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.2.0 (Unreleased)
+1.2.0 (2011-02-24)
 ------------------
 
 - fix XHTML Strict bug when the current context has a non-prettified id [keul]
