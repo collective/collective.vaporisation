@@ -16,6 +16,16 @@ The collective.vaporisation addons for Plone give to the user a tag cloud portle
 
 __ http://en.wikipedia.org/wiki/Tag_cloud
 
+.. figure:: http://keul.it/images/plone/collective.porteltpage-1.2.1-01.png
+   :alt: MoNet MultimediaMO tagcloud
+
+   Big tagcloud used in a collective.portletpage area
+
+.. figure:: http://keul.it/images/plone/collective.porteltpage-1.2.1-02.png
+   :alt: CCFE site tagcloud portlet
+
+   With some CSS rules you can customize colors
+
 An advanced feature is the "*join navigation*" that allows user to make a search related and sequential.
 During the search the view of the portlet is different. One first part of it shows only the keywords 
 into the contents that are result of the search. A second one show the selected tags allowing user to 
@@ -36,8 +46,9 @@ We see in detail what they do:
 `Number of keywords to display`
      This number indicate the max number of keywords shown. The value 0 (zero) show  all the keywords.
 `Cloud reload timeout`
-     Time in minutes after which the cloud should be reloaded.
-     This time isn't the only parameter that force the reload of cloud. 
+     Time in minutes after which the cloud should be reloaded. This time isn't the only parameter that
+     force the reload of cloud.
+     Put this value to "0" for disabling caching (**don't do this on production**).
 `Start path`
      Only the objects under this directory will be taken in consideration. 
      If empty (default), the portlet will search in all the site.
@@ -62,14 +73,14 @@ We see in detail what they do:
 `Sort keywords`
      If actived, the keywords will be sorted alphabetically.
 
-TODO and tricks of usage
-========================
+TODO and know issues
+====================
 
-- If we're using more than one tag cloud portlet we have to remind to use different name. In this way, 
+- If you're using more than one tag cloud portlet you have to remind to use different name. In this way, 
   the "join navigation" will be applied only to the portlet where the user clicks over a keyword.
 - The list of keywords used into the edit form doesn't change dinamically when the filters change
   To use the whitelist or the blacklist after a change to one of field used to filter the contents 
-  (like "Start path", "Indexes to use" and "Type of contents") you need to save the portlet and 
+  (like "*Start path*", "*Indexes to use*" and "*Type of contents*") you need to save the portlet and 
   re-enter into edit.
   
   During the load of edit form the vocabularies will be recreated.
@@ -77,7 +88,7 @@ TODO and tricks of usage
 Dependencies
 ============
 
-This product run on Plone 3 and Plone 4
+This product run on Plone 3.x and Plone 4.0.x
 
 Credits
 =======

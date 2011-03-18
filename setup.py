@@ -5,7 +5,7 @@ This module contains the tool of collective.vaporisation
 import os
 from setuptools import setup, find_packages
 
-version = '1.2.0'
+version = '1.2.1'
 
 tests_require=['zope.testing']
 
@@ -17,14 +17,14 @@ setup(name='collective.vaporisation',
       # Get more strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
         'Framework :: Plone',
-        "Development Status :: 4 - Beta",
+        "Development Status :: 5 - Production/Stable",
         'Intended Audience :: Developers',
         'License :: OSI Approved :: GNU General Public License (GPL)',
         ],
       keywords='plone plonegov vaporisation tag-cloud portlet',
       author='RedTurtle Technology',
       author_email='sviluppoplone@redturtle.net',
-      url='https://svn.plone.org/svn/collective/collective.vaporisation',
+      url='http://plone.org/products/collective.vaporisation',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['collective', ],
