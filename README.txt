@@ -88,7 +88,11 @@ TODO and know issues
 Dependencies
 ============
 
-This product run on Plone 3.x and Plone 4.0.x
+Tested on:
+
+* Plone 3.3
+* Plone 4.0
+* Plone 4.1
 
 Credits
 =======

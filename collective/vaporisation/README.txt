@@ -34,6 +34,7 @@ do this using the default user from PloneTestCase:
 
 We have the login portlet, so let's use that.
 
+    >>> browser.open(portal_url + '/login_form')
     >>> browser.getControl(name='__ac_name').value = portal_owner
     >>> browser.getControl(name='__ac_password').value = default_password
     >>> browser.getControl(name='submit').click()
@@ -41,12 +42,7 @@ We have the login portlet, so let's use that.
 Here, we set the value of the fields on the login form and then simulate a
 submit click.
 
-We then test that we are still on the portal front page:
-
-    >>> browser.url == portal_url
-    True
-
-And we ensure that we get the friendly logged-in message:
+We ensure that we get the friendly logged-in message:
 
     >>> "You are now logged in" in browser.contents
     True

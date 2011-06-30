@@ -1,6 +1,11 @@
 # -*- coding: utf-8 -*-
 
-from zope.app.schema.vocabulary import IVocabularyFactory
+try:
+    from zope.app.schema.vocabulary import IVocabularyFactory
+except ImportError:
+    # Plone 4.1
+    from zope.schema.interfaces import IVocabularyFactory
+
 from zope.interface.declarations import directlyProvides, implements
 from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
 from Products.CMFCore.utils import getToolByName
