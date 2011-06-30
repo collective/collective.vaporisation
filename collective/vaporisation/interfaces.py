@@ -5,6 +5,8 @@ from zope.lifecycleevent.interfaces import IObjectModifiedEvent
 from zope.interface import Interface
 from zope.i18nmessageid import MessageFactory
 from plone.app.vocabularies.catalog import SearchableTextSourceBinder
+from plone.portlets.interfaces import IPortletDataProvider
+
 
 _ = MessageFactory('collective.vaporisation')
 
@@ -14,7 +16,7 @@ class ITreeUpdateEvent( IObjectModifiedEvent ):
     This triggers the rebuilding of the whole tree
     """
 
-class ICustomizableCloud( Interface ):
+class ICustomizableCloud( IPortletDataProvider ):
     """
     Customizable parts of the cloud
     """

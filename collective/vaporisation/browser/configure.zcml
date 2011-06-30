@@ -6,7 +6,7 @@
   <include package="plone.app.contentmenu" />
 
   <browser:page
-	 for="*"
+	 for="Products.CMFPlone.interfaces.siteroot.IPloneSiteRoot"
 	 name="cloud_search"
 	 class=".search.CloudSearch"
 	 template="search.pt"
