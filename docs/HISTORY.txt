@@ -1,13 +1,12 @@
 Changelog
 =========
 
-1.2.2 (Unreleased)
+1.2.2 (2011-06-30)
 ------------------
 
 - now the ``cloud_search`` view is registered only for the site root.
-  This was fixed in version 1.2, but a search engines have long memory
-  and it could continue to kill the site cache.
-  [keul]
+  This was the same issue fixed in version 1.2, but a search engine have long memory
+  and it could continue to kill the site cache [keul]
 - egg cleanup [keul]
 - fixed tests (even if they are only ZopeSkel defaults) [keul]
 - fixed egg dependency properly for Plone 4.1 [keul]
