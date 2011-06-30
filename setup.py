@@ -2,12 +2,23 @@
 """
 This module contains the tool of collective.vaporisation
 """
-import os
+import os, sys
 from setuptools import setup, find_packages
 
 version = '1.2.2dev'
 
 tests_require=['zope.testing']
+
+install_requires = [
+    'setuptools',
+]
+
+# what I read there seems not working properly for Plone 3.3
+# http://plone.org/documentation/manual/upgrade-guide/version/upgrading-plone-4.0-to-4.1/referencemanual-all-pages
+if sys.version_info < (2, 6):
+    install_requires.append('Plone')
+else:
+    install_requires.append('Products.CMFPlone')
 
 setup(name='collective.vaporisation',
       version=version,
@@ -30,9 +41,7 @@ setup(name='collective.vaporisation',
       namespace_packages=['collective', ],
       include_package_data=True,
       zip_safe=False,
-      install_requires=['setuptools',
-                        # -*- Extra requirements: -*-
-                        ],
+      install_requires=install_requires,
       tests_require=tests_require,
       extras_require=dict(tests=tests_require),
       test_suite = 'collective.vaporisation.tests.test_docs.test_suite',

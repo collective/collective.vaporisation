@@ -10,6 +10,7 @@ Changelog
   [keul]
 - egg cleanup [keul]
 - fixed tests (even if they are only ZopeSkel defaults) [keul]
+- fixed egg dependency properly for Plone 4.1 [keul]
 
 1.2.1 (2011-03-18)
 ------------------
