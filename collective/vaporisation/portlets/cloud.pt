@@ -24,6 +24,7 @@
 	    tal:repeat="tag tags"
 	    class="vaporized-tag">
 	<a href=""
+	   rel="nofollow"
 	   tal:content="tag/name"
 	   tal:define="link python:view.getLinkPath(tag);"
 	   tal:attributes="style string:font-size: ${tag/size}%;
@@ -49,7 +50,10 @@
 	Joint navigation based on tags (click to remove) :
       </p>
       <tal:tag repeat="tag removable">
-	<a href="" tal:content="tag/name" tal:attributes="href tag/link"/>
+	<a tal:content="tag/name"
+	   tal:attributes="href tag/link">
+	   		My Special Link
+	</a>
 	<tal:separator condition="not: repeat/tag/end">
 	  &bull;
 	</tal:separator>

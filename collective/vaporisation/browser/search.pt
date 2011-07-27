@@ -10,6 +10,9 @@
         <link rel="alternate" title="RSS 1.0" type="application/rss+xml"
               tal:condition="request/SearchableText|nothing"
               tal:attributes="href string:$here_url/search_rss?${request/QUERY_STRING}"/>
+		
+		<meta name="robots" content="noindex, nofollow" />
+		
     </metal:block>
 
     <metal:block fill-slot="top_slot"
@@ -35,32 +38,33 @@
                  isAnon context/@@plone_portal_state/anonymous;
                  toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
 
-    <form name="searchform"
-          action="search"
+    <form action="search"
           class="searchPage">
-        <input class="searchPage"
-               name="SearchableText"
-               type="text"
-               size="25"
-               title="Search Site"
-               i18n:attributes="title title_search_title;"
-               tal:attributes="value request/SearchableText|nothing;"
-               />
-        <input class="searchPage searchButton"
-               type="submit"
-               value="Search"
-               i18n:attributes="value label_search;"/>
-
-        <p class="discreet"
-           i18n:translate="search_results_advanced">
-        Did you not find what you were looking for? Try the
-        <span i18n:name="advanced_search">
-        <a href=""
-           i18n:translate="search_results_advanced_link"
-           tal:attributes="href string:$portal_url/search_form?SearchableText=${request/SearchableText|python:''}">Advanced Search</a>
-        </span>
-        to refine your search.
-        </p>
+        <div>
+	        <input class="searchPage"
+	               name="SearchableText"
+	               type="text"
+	               size="25"
+	               title="Search Site"
+	               i18n:attributes="title title_search_title;"
+	               tal:attributes="value request/SearchableText|nothing;"
+	               />
+	        <input class="searchPage searchButton"
+	               type="submit"
+	               value="Search"
+	               i18n:attributes="value label_search;"/>
+	
+	        <p class="discreet"
+	           i18n:translate="search_results_advanced">
+	        Did you not find what you were looking for? Try the
+	        <span i18n:name="advanced_search">
+	        <a href=""
+	           i18n:translate="search_results_advanced_link"
+	           tal:attributes="href string:$portal_url/search_form?SearchableText=${request/SearchableText|python:''}">Advanced Search</a>
+	        </span>
+	        to refine your search.
+	        </p>
+		</div>
     </form>
 
 

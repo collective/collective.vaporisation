@@ -1,10 +1,21 @@
 Changelog
 =========
 
+1.2.3 (2011-07-27)
+------------------
+
+- SEO friend: cloud SERP page now add a propert ``meta`` tag [keul]  
+- SEO friend: cloud link now use a proper ``rel`` value for stop
+  search engines to try indexing cloud SERP pages [keul]
+- changed the default value for *join navigation* as it can be very
+  expensive in some kind of sites. A simple search page is enough
+  for most users [keul]
+- some XHTML Strict fixes in the SERP page [keul]
+
 1.2.2 (2011-06-30)
 ------------------
 
-- now the ``cloud_search`` view is registered only for the site root.
+- now the ``cloud_search`` view is registered only for the site root [keul]
   This was the same issue fixed in version 1.2, but a search engine have long memory
   and it could continue to kill the site cache [keul]
 - egg cleanup [keul]
