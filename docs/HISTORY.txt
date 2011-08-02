@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.2.4 (Unreleased)
+------------------
+
+- Link to RSS feed from the search always root-site-based [keul]
+
 1.2.3 (2011-07-27)
 ------------------
 
