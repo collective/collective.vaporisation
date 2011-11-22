@@ -5,6 +5,8 @@ Changelog
 ------------------
 
 - Link to RSS feed from the search always root-site-based [keul]
+- Changed the required permission to ``Portlets: Manage portlets``.
+  This also fix Plone 4.1 compatibility [keul]
 
 1.2.3 (2011-07-27)
 ------------------
