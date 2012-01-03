@@ -30,8 +30,8 @@ def _cloud_key(method, self):
     timestamp = time() // (60 * self.data.timeout)
     user_id = self.context.portal_membership.getAuthenticatedMember().getId()
     if not user_id:
-        user_id = 'anonymous'
-    params =  "%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s" % (self.data.name,
+        user_id = 'anonymous' 
+    params =  "%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s" % (self.data.name,
                                                 self.data.steps,
                                                 self.data.joint,
                                                 self.data.limit,
@@ -43,7 +43,8 @@ def _cloud_key(method, self):
                                                 self.data.mode_to_use,
                                                 self.request.QUERY_STRING,
                                                 str(user_id),
-                                                str(self.data.timeout))
+                                                str(self.data.timeout),
+                                                getToolByName(self.context, 'portal_url')())
     key = "%s:%s" % (timestamp,params)
     return str(hash(key))
 
