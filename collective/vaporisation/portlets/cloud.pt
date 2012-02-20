@@ -19,58 +19,57 @@
 
   <dd class="portletItem"
       tal:define="tags view/getVaporizedCloud;">
-    <div>
-      <span tal:condition="tags"
-	    tal:repeat="tag tags"
-	    class="vaporized-tag">
-	<a href=""
-	   rel="nofollow"
-	   tal:content="tag/name"
-	   tal:define="link python:view.getLinkPath(tag);"
-	   tal:attributes="style string:font-size: ${tag/size}%;
-	   		   class python:'size_'+str(tag['size'])[:2];
-			   href link;
-			   title string:${tag/name} (${tag/weight});" />
+    <div class="tags-list"
+	     tal:condition="tags">
+      <span class="vaporized-tag"
+	        tal:repeat="tag tags">
+		<a href=""
+		   rel="nofollow"
+		   tal:content="tag/name"
+		   tal:define="link python:view.getLinkPath(tag);"
+		   tal:attributes="style string:font-size: ${tag/size}%;
+		   		   class python:'size_'+str(tag['size'])[:2];
+				   href link;
+				   title string:${tag/name} (${tag/weight});" />
       </span>
     </div>
     <p class="discreet"
        i18n:translate="no_related_tags"
        tal:condition="not: tags">No related tags</p>
-    
-    <div id="cloud-footer">&nbsp;</div>
   </dd>
 
   <dd class="portletFooter">
   	<span class="portletBottomLeft"></span>
 	<tal:if condition="python: (removable and joint) or
 		             (currents and not joint)"> 
-    <tal:joint condition="python: joint and removable">
-      <p class="discreet"
-	 i18n:translate="joint_navigation">
-	Joint navigation based on tags (click to remove) :
-      </p>
-      <tal:tag repeat="tag removable">
-	<a tal:content="tag/name"
-	   tal:attributes="href tag/link">
-	   		My Special Link
-	</a>
-	<tal:separator condition="not: repeat/tag/end">
-	  &bull;
-	</tal:separator>
-      </tal:tag>
-    </tal:joint>
+        <div class="cloud-footer">&nbsp;</div>
+        <tal:joint condition="python: joint and removable">
+		      <p class="discreet"
+			     i18n:translate="joint_navigation">
+			   Joint navigation based on tags (click to remove) :
+		      </p>
+		      <tal:tag repeat="tag removable">
+				<a tal:content="tag/name"
+				   tal:attributes="href tag/link">
+				   		My Special Link
+				</a>
+				<tal:separator condition="not: repeat/tag/end">
+				  &bull;
+				</tal:separator>
+		      </tal:tag>
+        </tal:joint>
 
-    <tal:joint condition="not: joint">
-      <tal:browsing tal:condition="currents">
-	<p class="discreet"
-	   i18n:translate="normal_navigation">
-	  Actually searching on :
-	</p>
-	<tal:tag repeat="tag currents">
-	  <strong tal:content="tag" />
-	</tal:tag>
-      </tal:browsing>
-    </tal:joint>
+	    <tal:joint condition="not: joint">
+	      <tal:browsing tal:condition="currents">
+			<p class="discreet"
+			   i18n:translate="normal_navigation">
+			  Actually searching on :
+			</p>
+			<tal:tag repeat="tag currents">
+			  <strong tal:content="tag" />
+			</tal:tag>
+	      </tal:browsing>
+	    </tal:joint>
 	</tal:if>
     <span class="portletBottomRight"></span>
   </dd>

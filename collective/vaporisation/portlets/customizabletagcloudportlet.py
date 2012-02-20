@@ -207,8 +207,7 @@ class Renderer( base.Renderer ):
     def getLinkPath(self, tag):
         search_path = self.getStartPath()
         portal = getToolByName(self.context, 'portal_url').getPortalObject()
-        cloudContext = portal.unrestrictedTraverse(self.getStartPath())
-        link = "%s/cloud_search" % cloudContext.absolute_url()
+        link = "%s/cloud_search" % portal.absolute_url()
         portlet = self.request.form.get('portlet', None)
         query = self.request['QUERY_STRING']
         if query and portlet == self.data.__name__:

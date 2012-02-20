@@ -1,0 +1,143 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: collective.vaporisation\n"
+"POT-Creation-Date: 2012-02-01 14:09+0000\n"
+"PO-Revision-Date: 2012-02-01 14:10-0300\n"
+"Last-Translator: Rafahela Garcia Bazzanella <rafahela@gmail.com>\n"
+"Language-Team: TcheZope.org <tchezope@yahoogroups.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: pt-br\n"
+"Language-Name: Brazilian Portuguese\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: collective.vaporisation\n"
+
+#: ./interfaces.py:70
+msgid "Activate joint navigation"
+msgstr "Ativar união de navegação"
+
+#: ./portlets/customizabletagcloudportlet.py:237
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: ./portlets/customizabletagcloudportlet.py:231
+msgid "Changes saved and tagcloud updated."
+msgstr "Alterações salvas e palavras atualizadas."
+
+#: ./interfaces.py:43
+msgid "Cloud reload timeout"
+msgstr "Tempo de recarga expirado"
+
+#: ./interfaces.py:103
+msgid "If selected, the keywords will be sorted alphabetically."
+msgstr "Se selecionado, as palavras-chave serão apresentadas em ordem alfabética."
+
+#: ./interfaces.py:54
+msgid "Indexes to use"
+msgstr "Índices disponíveis"
+
+#: ./interfaces.py:71
+msgid "Joint navigation puts keywords together for associative searches."
+msgstr "A união de navegação coloca as palavras-chave juntas para buscas associativas."
+
+#: ./interfaces.py:78
+msgid "List of keywords to use in the cloud"
+msgstr "Através da lista abaixo é possível escolher quais palavras-chave serão apresentadas na caixa."
+
+#: ./interfaces.py:92
+msgid "Mode to use"
+msgstr "Modo de usar"
+
+#: ./interfaces.py:23
+msgid "Name to display"
+msgstr "Título"
+
+#: ./portlets/customizabletagcloudportlet.py:233
+msgid "No changes."
+msgstr "Nenhuma alteração."
+
+#: ./interfaces.py:30
+msgid "Number of different sizes"
+msgstr "Tamanhos diferentes"
+
+#: ./interfaces.py:37
+msgid "Number of keywords to display"
+msgstr "Quantidade de palavras-chave a serem apresentadas"
+
+#: ./interfaces.py:62
+msgid "Only the objects of this type will be counted."
+msgstr "Somente palavras-chave cadastradas nestes tipos de conteúdo serão apresentadas."
+
+#: ./interfaces.py:49
+msgid "Only the objects under this directory will be counted. If empty, the portlet will search in all the site."
+msgstr "Somente as palavras-chave abaixo deste diretório serão apresentadas. Se não for selecionado um diretório, serão buscadas palavras-chave em todo o site."
+
+#: ./interfaces.py:84
+msgid "Remove from keywords list"
+msgstr "Remover da lista de palavras-chave"
+
+#: ./interfaces.py:85
+msgid "Restrict the cloud keywords by removing these keywords.If there is something selected in the list over, the values of that list will be ignored."
+msgstr "Através da lista abaixo é possível escolher quais palavras-chave NÃO serão apresentadas na caixa. Se alguma palavra-chave for selecionada na lista acima, os valores daquela lista serão ignorados."
+
+#: ./portlets/customizabletagcloudportlet.py:225
+msgid "Save"
+msgstr "Salvar"
+
+#: ./interfaces.py:55
+msgid "Select from the list the indexes to use for the cloud"
+msgstr "Selecione os íncides dos quais as palavras-chave serão usadas para serem apresentadas na caixa."
+
+#: ./interfaces.py:93
+msgid "Select one of the possible mode to use the cloud"
+msgstr "Selecione um dos modos disponíveis para ser usado como layout da caixa."
+
+#: ./interfaces.py:102
+msgid "Sort keywords"
+msgstr "Classificar palavras-chave"
+
+#: ./interfaces.py:48
+msgid "Start path"
+msgstr "Caminho de referência"
+
+#: ./interfaces.py:24
+msgid "The name of the tagcloud. For display purposes."
+msgstr "Este título aparecerá na parte superior da caixa que mostra as palavras-chave, portanto deve ser curto."
+
+#: ./interfaces.py:31
+msgid "This number will also determine the biggest size."
+msgstr "Este número determina o maior tamanho da fonte utilizada para apresentar as palavras na caixa."
+
+#: ./interfaces.py:44
+msgid "Time in minutes after which the cloud should be reloaded."
+msgstr "Tempo em minutos em que as palavras devem ser atualizadas."
+
+#: ./interfaces.py:61
+msgid "Type of contents"
+msgstr "Tipos de conteúdo"
+
+#: ./interfaces.py:77
+msgid "Use only the keywords of this list"
+msgstr "Usar somente as palavras-chave desta lista"
+
+#: ./interfaces.py:38
+msgid "Zero displays it all."
+msgstr "Número 0 mostra toda as palavras-chave."
+
+#. Default: "Joint navigation based on tags (click to remove) :"
+#: ./portlets/cloud.pt:47
+msgid "joint_navigation"
+msgstr ""
+
+#. Default: "No related tags"
+#: ./portlets/cloud.pt:35
+msgid "no_related_tags"
+msgstr ""
+
+#. Default: "Actually searching on :"
+#: ./portlets/cloud.pt:61
+msgid "normal_navigation"
+msgstr ""
+

@@ -1,6 +1,14 @@
 Changelog
 =========
 
+1.2.5 (2012-02-20) unreleased
+------------------
+
+- removed empty div (&nbsp;) into the footer of the portlet (#1) [mircoangelini]
+- added class "tags-list" to the div that contain the keyword into the portlet (#1) [mircoangelini]
+- fixed base url for search (#2) [mircoangelini]
+- added Brazilian-Portuguese translation [rafahela]
+
 1.2.5 (2012-01-03)
 ------------------
 
