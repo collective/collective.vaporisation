@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.2.5 (2012-02-20)
+1.2.6 (2012-02-20)
 ------------------
 
 - removed empty div (&nbsp;) into the footer of the portlet (#1) [mircoangelini]
