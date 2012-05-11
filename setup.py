@@ -5,9 +5,9 @@ This module contains the tool of collective.vaporisation
 import os, sys
 from setuptools import setup, find_packages
 
-version = '1.2.6'
+version = '1.2.7-unreleased'
 
-tests_require=['zope.testing']
+tests_require = ['zope.testing']
 
 install_requires = [
     'setuptools',
@@ -47,9 +47,9 @@ setup(name='collective.vaporisation',
       install_requires=install_requires,
       tests_require=tests_require,
       extras_require=dict(tests=tests_require),
-      test_suite = 'collective.vaporisation.tests.test_docs.test_suite',
+      test_suite='collective.vaporisation.tests.test_docs.test_suite',
       entry_points="""
-      # -*- entry_points -*- 
+      # -*- entry_points -*-
       [z3c.autoinclude.plugin]
       target = plone
       """,
