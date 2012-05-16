@@ -32,10 +32,20 @@ def _cloud_key(method, self):
     user_id = self.context.portal_membership.getAuthenticatedMember().getId()
     if not user_id:
         user_id = 'anonymous'
-    params = "%s:%s:%s:%s" % (self.request.QUERY_STRING,
-                               str(user_id),
-                               str(self.data.timeout),
-                               getToolByName(self.context, 'portal_url')())
+    params =  "%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s" % (self.data.name,
+                                                self.data.steps,
+                                                self.data.joint,
+                                                self.data.limit,
+                                                self.data.startpath,
+                                                self.data.restrict,
+                                                self.data.type,
+                                                self.data.indexes_to_use,
+                                                self.data.white_list,
+                                                self.data.mode_to_use,
+                                                self.request.QUERY_STRING,
+                                                str(user_id),
+                                                str(self.data.timeout),
+                                                getToolByName(self.context, 'portal_url')())
     key = "%s:%s" % (timestamp, params)
     return str(hash(key))
 
@@ -121,11 +131,6 @@ class Renderer(base.Renderer):
 
     @ram.cache(_cloud_key)
     def render(self):
-        adapter = getAdapter(self.data, ISteamer, self.data.mode_to_use)
-        adapter.setTree()
-        if self.data.timeout:
-            logger.info('Tagcloud "%s" has been updated (%s)'
-                        % (self.data.name, DateTime()))
         return self._template()
 
     def isJointNavigation(self):
