@@ -68,7 +68,7 @@ class ICustomizableCloud( IPortletDataProvider ):
     
     joint = Bool(
         default=False,
-        required=True,
+        required=False,
         title=_(u"Activate joint navigation"),
         description=_(u"Joint navigation puts keywords together"
                       u" for associative searches.")

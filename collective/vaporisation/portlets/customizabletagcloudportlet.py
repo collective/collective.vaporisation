@@ -132,6 +132,7 @@ class Renderer(base.Renderer):
 
     @ram.cache(_cloud_key)
     def render(self):
+#        logger.info("Renderizzo!")
         return self._template()
 
     def isJointNavigation(self):
