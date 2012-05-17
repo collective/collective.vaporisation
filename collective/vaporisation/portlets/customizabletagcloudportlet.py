@@ -32,21 +32,22 @@ def _cloud_key(method, self):
     user_id = self.context.portal_membership.getAuthenticatedMember().getId()
     if not user_id:
         user_id = 'anonymous'
-    params =  "%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s" % (self.data.name,
-                                                self.data.steps,
-                                                self.data.joint,
-                                                self.data.limit,
-                                                self.data.startpath,
-                                                self.data.restrict,
-                                                self.data.type,
-                                                self.data.indexes_to_use,
-                                                self.data.white_list,
-                                                self.data.mode_to_use,
-                                                self.request.QUERY_STRING,
-                                                str(user_id),
-                                                str(self.data.timeout),
-                                                getToolByName(self.context, 'portal_url')())
-    key = "%s:%s" % (timestamp, params)
+    params = "%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:%s:" % (self.data.name,
+                              self.data.steps,
+                              self.data.joint,
+                              self.data.limit,
+                              self.data.startpath,
+                              self.data.restrict,
+                              self.data.type,
+                              self.data.indexes_to_use,
+                              self.data.white_list,
+                              self.data.mode_to_use,
+                              str(user_id),
+                              str(self.data.timeout),
+                              getToolByName(self.context, 'portal_url')())
+    if self.data.joint:
+        params = "%s:%s" % (params, self.request.QUERY_STRING)
+    key = "%s:%s" % (params, timestamp)
     return str(hash(key))
 
 

@@ -1,10 +1,12 @@
 Changelog
 =========
 
-1.2.7 (2012-??-??) unreleased
+1.2.7 (2012-05-17)
 ------------------
 
 - moved reload of tags of a portlet from cache-key to the save button (#3) [mircoangelini]
+- conditioned the use of QUERY_STRING into _cloud_key only if the "join navigation" is enabled 
+  (#3) [mircoangelini]
 
 1.2.6 (2012-02-20)
 ------------------

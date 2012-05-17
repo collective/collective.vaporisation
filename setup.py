@@ -2,10 +2,11 @@
 """
 This module contains the tool of collective.vaporisation
 """
-import os, sys
+import os
+import sys
 from setuptools import setup, find_packages
 
-version = '1.2.7-unreleased'
+version = '1.2.7'
 
 tests_require = ['zope.testing']
 
