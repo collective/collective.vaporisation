@@ -6,7 +6,7 @@ import os
 import sys
 from setuptools import setup, find_packages
 
-version = '1.2.7'
+version = '1.3.0'
 
 tests_require = ['zope.testing']
 
@@ -32,6 +32,7 @@ setup(name='collective.vaporisation',
         'Framework :: Plone :: 3.3',
         'Framework :: Plone :: 4.0',
         'Framework :: Plone :: 4.1',
+        'Framework :: Plone :: 4.2',
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: GNU General Public License (GPL)',

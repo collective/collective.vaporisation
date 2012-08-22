@@ -93,6 +93,7 @@ Tested on:
 * Plone 3.3
 * Plone 4.0
 * Plone 4.1
+* Plone 4.2
 
 Credits
 =======
