@@ -1,16 +1,27 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
     i18n_domain="collective.vaporisation">
 
-  <include package="plone.app.contentmenu" />
+  	<include package="plone.app.contentmenu" />
 
-  <browser:page
-	 for="Products.CMFPlone.interfaces.siteroot.IPloneSiteRoot"
-	 name="cloud_search"
-	 class=".search.CloudSearch"
-	 template="search.pt"
-	 permission="zope2.View"
-	 />
+  	<browser:page
+		for="Products.CMFPlone.interfaces.siteroot.IPloneSiteRoot"
+		name="cloud_search"
+		class=".search.CloudSearch"
+		template="search.pt"
+		permission="zope2.View"
+		zcml:condition="installed plone.app.search"
+		/>
+
+	<browser:page
+		for="Products.CMFPlone.interfaces.siteroot.IPloneSiteRoot"
+		name="cloud_search"
+		class=".old_search.CloudSearch"
+		template="old_search.pt"
+		permission="zope2.View"
+		zcml:condition="not-installed plone.app.search"
+		/>
 
 </configure>
