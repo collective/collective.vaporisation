@@ -6,7 +6,7 @@ import os
 import sys
 from setuptools import setup, find_packages
 
-version = '1.3.1'
+version = '1.3.2.dev0'
 
 tests_require = ['zope.testing']
 
@@ -24,8 +24,8 @@ else:
 setup(name='collective.vaporisation',
       version=version,
       description="Plone portlet for vaporisation tagcloud",
-      long_description=open("README.txt").read() + "\n" +
-                       open(os.path.join("docs", "HISTORY.rst")).read(),
+      long_description=open("README.rst").read() + "\n" +
+                       open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
         'Framework :: Plone',

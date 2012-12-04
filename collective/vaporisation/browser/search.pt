@@ -40,11 +40,11 @@
                              b_start request/b_start | b_start;
                              use_types_blacklist request/use_types_blacklist | python:True;
                              use_navigation_root request/use_navigation_root | python:True;
-                             batch python: view.cloudQueryCatalog(use_types_blacklist,use_navigation_root);
+                             batch python: view.cloudQueryCatalog(use_types_blacklist,use_navigation_root,b_start=b_start);
                              normalizeString nocall:context/@@plone/normalizeString;">
 
                 <metal:searchresults define-macro="search_results">
-                    <div id="search-results">
+                    <div id="vaporisation-search-results">
 
                         <metal:noresults tal:condition="not: batch">
                           <p i18n:domain="plone"><strong i18n:translate="description_no_results_found">No results were found.</strong></p>
