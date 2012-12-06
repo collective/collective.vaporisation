@@ -204,7 +204,7 @@ class Renderer(base.Renderer):
             return root_path
 
     def getLinkPath(self, tag):
-        search_path = self.getStartPath()
+        portlet_path = ('/').join(self.context.getPhysicalPath())
         portal = getToolByName(self.context, 'portal_url').getPortalObject()
         link = "%s/cloud_search" % portal.absolute_url()
         portlet = self.request.form.get('portlet', None)
@@ -212,7 +212,7 @@ class Renderer(base.Renderer):
         if query and portlet == self.data.__name__:
             link = "%s?%s" % (link, query)
         else:
-            link = "%s?portlet=%s&path=%s" % (link, self.data.__name__, search_path)
+            link = "%s?portlet=%s&path=%s" % (link, self.data.__name__, portlet_path)
         if tag['index']:
             index_url = "&%s:list=%s"
             indexes_url = "".join([index_url % (tag['name'], index) for index in tag['index']])

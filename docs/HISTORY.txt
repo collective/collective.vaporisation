@@ -4,8 +4,9 @@ Changelog
 1.3.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- The 'path' parameter passed to the search from the portlet is now the relative path of the context where is located the portlet. [mircoangelini]
+- In search function, the 'path' and 'portal_type' filters are taken directly from the portlet. The portlet is identified using 'name' and 'path' passed into the url. [mircoangelini]
+- Fixed the catalog query for find the objects of the single keyword. This objects are used to calculate weight of the keywords into tagcloud portlet. [mircoangelini]
 
 1.3.3 (2012-12-05)
 ------------------

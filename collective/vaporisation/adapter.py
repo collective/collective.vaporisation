@@ -40,9 +40,9 @@ class Steamer(object):
 
     def getTagsFromTree(self, keywords):
         """ Returns a list of dicts with the needed infos """
-        
+
         tags = list()
-        
+
         for keyword in keywords:
             if keyword in self.context.tagsTree:
                 size, weight = self.getStepForTag(keyword)
@@ -56,9 +56,9 @@ class Steamer(object):
 
     def getConnectionsFor(self, keywords):
         """ Will retrieve the related keywords of the given keyword """
-        
+
         tags = None
-        for keyword in keywords:            
+        for keyword in keywords:
             if keyword in self.context.tagsTree:
                 tag = self.context.tagsTree[keyword]
                 if tags is None:
@@ -82,7 +82,7 @@ class Steamer(object):
 
     def updateWitnessWeights(self, value):
         """ Witnesses are just used as weight for fonts """
-        
+
         if value > self.context.highest:
             self.context.highest = value
         if value < self.context.lowest:
@@ -91,7 +91,7 @@ class Steamer(object):
 
     def updateTree(self, index, keywords):
         """ Triggered on the update """
-        
+
         tags = self.context.tagsTree
         for keyword in keywords:
             if keyword in self.context.tagsTree:
@@ -129,7 +129,7 @@ class Steamer(object):
         for toDelete in self.context.tagsTree.keys():
             if toDelete not in keywords:
                 del self.context.tagsTree[toDelete]
-        
+
         self.context.keywords = keywords
         shuffle(self.context.keywords)
 
@@ -144,7 +144,7 @@ class Steamer(object):
         self.context.tagsTree = dict()
         weights = {}
         root_path= ('/').join(portalurl.getPortalObject().getPhysicalPath())
-        
+
         if self.context.data.startpath:
             search_path= root_path+self.context.data.startpath
         else:
@@ -156,15 +156,14 @@ class Steamer(object):
             control_query={'path':search_path}
             if self.context.type:
                 control_query['portal_type']=self.context.type
-                
-            subjects = [x for x 
-                        in catalog.uniqueValuesFor(index) 
+
+            subjects = [x for x
+                        in catalog.uniqueValuesFor(index)
                         if catalog.searchResults(index=x, **control_query)]
-            
             self.context.all_keys = [unicode(k, encoding) for k in subjects]
             self.context.all_keys.sort()
             self.context.keywords = [k for k in self.context.all_keys]
-        
+
             # Now, taking care of the restricted keywords, we build
             # a restricted list and query all the objects using them,
             # via the portal catalog.
@@ -174,7 +173,9 @@ class Steamer(object):
             else:
                 keywords = [k.encode(encoding) for k in self.context.keywords
                                 if k not in self.context.restrict]
-            objects  = catalog({'path':search_path, index:keywords})
+            query = control_query.copy()
+            query['index'] = keywords
+            objects  = catalog(**query)
             keywords = set(keywords)
             # Using the main method, we build the references between the tags.
             # We build a list of tags for each objects, verifying the restriction.
@@ -217,7 +218,7 @@ class Steamer(object):
                         self.updateTree(index,allowed_keywords)
         self.updateWeightsTree(weights)
         self.restrictTree()
-        
+
     def updateWeightsTree(self,weights):
         """
         Update the Tagcloud Tree with the weights
@@ -225,8 +226,8 @@ class Steamer(object):
         for k in weights:
             self.context.tagsTree[k]['weight'] = len(weights[k])
             self.updateWitnessWeights(self.context.tagsTree[k]['weight'])
-                     
-            
+
+
     def _generateCloudRelationSet(self, tags):
         """Generate a set of relations for a set of tags.
         This means: all tags used in contents that behave all given tags.
@@ -236,12 +237,12 @@ class Steamer(object):
         context = self.context
         catalog = getToolByName(context, 'portal_catalog')
         root_path= ('/').join(self.context.context.portal_url.getPortalObject().getPhysicalPath())
-        
+
         if self.context.data.startpath:
             search_path= root_path+self.context.data.startpath
         else:
             search_path= root_path
-            
+
         results = catalog(Subject={'query':[x.encode('utf8') for x in tags], 'operator':'and'},
                           path=search_path)
         resTags = []
@@ -249,4 +250,3 @@ class Steamer(object):
             subjects=[y.decode('utf8') for y in x.Subject]
             resTags.extend(subjects)
         return set(resTags)-set(tags)
-    
