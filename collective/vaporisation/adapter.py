@@ -182,26 +182,7 @@ class Steamer(object):
             if index in catalog._catalog.names:
                 for obj in objects:
                     obj_keywords = getattr(obj, index, None)
-                    if callable(obj_keywords):
-                        obj_keywords=obj_keywords()
-                    allowed_keywords=set(obj_keywords).intersection(keywords)
-                    allowed_keywords=[unicode(k, encoding) for k in allowed_keywords]
-                    obj_uid = obj.UID
-                    if callable(obj_uid):
-                        obj_uid = obj_uid()
-                    for k in allowed_keywords:
-                        if k in weights.keys():
-                            if not obj_uid in weights[k]:
-                                weights[k].append(obj_uid)
-                        else:
-                            weights[k] = [obj_uid,]
-                    self.updateTree(index,allowed_keywords)
-            else:
-                index_sources = catalog._catalog.indexes[index].getIndexSourceNames()
-                for index_source in index_sources:
-                    for obj in objects:
-                        obj = obj.getObject()
-                        obj_keywords = getattr(obj, index_source, None)
+                    if obj_keywords and not obj_keywords == 'Missing.Value':
                         if callable(obj_keywords):
                             obj_keywords=obj_keywords()
                         allowed_keywords=set(obj_keywords).intersection(keywords)
@@ -216,6 +197,27 @@ class Steamer(object):
                             else:
                                 weights[k] = [obj_uid,]
                         self.updateTree(index,allowed_keywords)
+            else:
+                index_sources = catalog._catalog.indexes[index].getIndexSourceNames()
+                for index_source in index_sources:
+                    for obj in objects:
+                        obj = obj.getObject()
+                        obj_keywords = getattr(obj, index_source, None)
+                        if obj_keywords and not obj_keywords == 'Missing.Value':
+                            if callable(obj_keywords):
+                                obj_keywords=obj_keywords()
+                            allowed_keywords=set(obj_keywords).intersection(keywords)
+                            allowed_keywords=[unicode(k, encoding) for k in allowed_keywords]
+                            obj_uid = obj.UID
+                            if callable(obj_uid):
+                                obj_uid = obj_uid()
+                            for k in allowed_keywords:
+                                if k in weights.keys():
+                                    if not obj_uid in weights[k]:
+                                        weights[k].append(obj_uid)
+                                else:
+                                    weights[k] = [obj_uid,]
+                            self.updateTree(index,allowed_keywords)
         self.updateWeightsTree(weights)
         self.restrictTree()
 
