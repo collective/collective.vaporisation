@@ -38,7 +38,7 @@ class CloudSearch(SearchView):
         if portlet_assignments:
             base_query['portal_type'] = portlet_assignments.type
             site_id = self.context.getId()
-            base_query['path'] = '/'+site_id+portlet_assignments.startpath
+            base_query['path'] = '/' + site_id + (portlet_assignments.startpath or '')
         if batch:
             base_query['b_start'] = b_start = int(b_start)
             base_query['b_size'] = b_size
