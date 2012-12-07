@@ -1,3 +1,5 @@
+from Acquisition import aq_parent
+
 from DateTime import DateTime
 
 from zope.formlib import form
@@ -117,15 +119,14 @@ class Renderer(base.Renderer):
     def __init__(self, context, request, view, manager, data):
         super(Renderer, self).__init__(context, request, view, manager, data)
         self.subjects = None
-        putils = getToolByName(context, 'plone_utils')
-        self.encoding = putils.getSiteEncoding()
+        self.putils = getToolByName(context, 'plone_utils')
         self.purl = getToolByName(context, 'portal_url')()
+        self.encoding = self.putils.getSiteEncoding()
+        self.portal = self.context.portal_url.getPortalObject()
 
     def generatedId(self):
         """get a unique portlet id, base on the portlet context"""
-        context = self.context
-        putils = getToolByName(context, 'plone_utils')
-        return putils.normalizeString(self.data.title)
+        return self.putils.normalizeString(self.data.title)
 
     def Title(self):
         return self.data.name
@@ -197,14 +198,22 @@ class Renderer(base.Renderer):
         return removable
 
     def getStartPath(self):
-        root_path = ('/').join(self.context.portal_url.getPortalObject().getPhysicalPath())
+        root_path = ('/').join(self.portal.getPhysicalPath())
         if self.data.startpath:
             return root_path + self.data.startpath
         else:
             return root_path
 
     def getLinkPath(self, tag):
-        portlet_path = ('/').join(self.context.getPhysicalPath())
+        portlet_render_class = aq_parent(self.data)
+        if hasattr(portlet_render_class, '__portlet_metadata__'):
+            portlet_path = portlet_render_class.__portlet_metadata__.get('key','/'+self.portal.getId())
+            if not portlet_path.startswith('/'):
+                portlet_path = '/'+portlet_path
+            if not portlet_path.startswith('/'+self.portal.getId()):
+                portlet_path = '/'+self.portal.getId()+portlet_path
+        else:
+            portlet_path = '/'+self.portal.getId()
         portal = getToolByName(self.context, 'portal_url').getPortalObject()
         link = "%s/cloud_search" % portal.absolute_url()
         portlet = self.request.form.get('portlet', None)
