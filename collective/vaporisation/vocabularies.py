@@ -45,30 +45,41 @@ class KeywordVocabulary(object):
             indexes_to_use = ['Subject']
 
         if hasattr(context, 'startpath'):
-            root_path= ('/').join(context.portal_url.getPortalObject().getPhysicalPath())
+            root_path = ('/').join(
+                    context.portal_url.getPortalObject().getPhysicalPath())
             if context.startpath:
-                search_path= root_path + context.startpath
+                search_path = root_path + context.startpath
             else:
-                search_path= root_path
+                search_path = root_path
             if hasattr(context, 'type') and context.type:
                 for index in indexes_to_use:
-                     subjects = subjects + [x for x
-                                           in catalog.uniqueValuesFor(index)
-                                           if catalog.searchResults({'path':search_path,'portal_type':context.type,index:x})]
+                    subjects = subjects + [
+                        x for x in catalog.uniqueValuesFor(index)
+                        if catalog.searchResults({
+                            'path': search_path,
+                            'portal_type': context.type,
+                            index:x})]
             else:
                 for index in indexes_to_use:
-                    subjects = subjects + [x for x
-                                          in catalog.uniqueValuesFor(index)
-                                          if catalog.searchResults({'path':search_path,index:x})]
+                    subjects = subjects + [
+                        x for x
+                        in catalog.uniqueValuesFor(index)
+                        if catalog.searchResults({
+                            'path':search_path,
+                            index:x})]
         else:
             if hasattr(context, 'type') and context.type:
                 for index in indexes_to_use:
-                    subjects = subjects + [x for x
-                            in catalog.uniqueValuesFor(index)
-                            if catalog.searchResults({'portal_type':context.type,index:x})]
+                    subjects = subjects + [
+                        x for x
+                        in catalog.uniqueValuesFor(index)
+                        if catalog.searchResults({
+                            'portal_type':context.type,
+                            index:x})]
             else:
                 for index in indexes_to_use:
-                    subjects = subjects + [x for x in catalog.uniqueValuesFor(index)]
+                    subjects = subjects + [
+                        x for x in catalog.uniqueValuesFor(index)]
 
         keywords = set([unicode(k, encoding) for k in subjects])
         terms = [KeywordTerm(k) for k in sorted(keywords)]
@@ -84,11 +95,15 @@ class IndexesVocabulary(object):
 
     def __call__(self, context):
         pc = context.portal_catalog
-        remove_indexes = ['allowedRolesAndUsers','getRawRelatedItems','object_provides']
+        remove_indexes = [
+            'allowedRolesAndUsers',
+            'getRawRelatedItems',
+            'object_provides'
+        ]
         indexes = [x for x in pc.indexes()
-                   if pc._catalog.indexes[x].meta_type=='KeywordIndex'
+                   if pc._catalog.indexes[x].meta_type == 'KeywordIndex'
                    and not x in remove_indexes]
-        terms = [SimpleTerm(index,index) for index in indexes]
+        terms = [SimpleTerm(index, index) for index in indexes]
         return SimpleVocabulary(terms)
 
 IndexesVocabularyFactory = IndexesVocabulary()
@@ -103,7 +118,7 @@ class ModeVocabulary(object):
         encoders = [encoder[0]
                     for encoder
                     in getAdapters((pseudoassignment,), ISteamer)]
-        terms = [SimpleTerm(encoder,encoder) for encoder in encoders]
+        terms = [SimpleTerm(encoder, encoder) for encoder in encoders]
         return SimpleVocabulary(terms)
 
 ModeVocabularyFactory = ModeVocabulary()
