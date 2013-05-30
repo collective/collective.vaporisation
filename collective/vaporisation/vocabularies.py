@@ -77,28 +77,10 @@ class KeywordVocabulary(object):
 KeywordVocabularyFactory = KeywordVocabulary()
 
 
-class TypesVocabulary(object):
-    """Vocabulary factory for types of a cloud.
-    """
-    implements(IVocabularyFactory)
-
-    def __call__(self, context):
-        portal_types = getToolByName(context, 'portal_types')
-        portal_properties = getToolByName(context, 'portal_properties')
-        metaTypesNotToList = portal_properties.navtree_properties.metaTypesNotToList
-        types = [ x for x
-                 in portal_types.keys()
-                 if x not in metaTypesNotToList]
-        terms = [SimpleTerm(type,type) for type in types]
-        return SimpleVocabulary(terms)
-
-TypesVocabularyFactory = TypesVocabulary()
-
-
 class IndexesVocabulary(object):
     """Vocabulary factory for indexes of a cloud.
     """
-    implements( IVocabularyFactory )
+    implements(IVocabularyFactory)
 
     def __call__(self, context):
         pc = context.portal_catalog
@@ -115,7 +97,7 @@ IndexesVocabularyFactory = IndexesVocabulary()
 class ModeVocabulary(object):
     """Vocabulary factory for mode to use of a cloud.
     """
-    implements( IVocabularyFactory )
+    implements(IVocabularyFactory)
 
     def __call__(self, context):
         encoders = [encoder[0]

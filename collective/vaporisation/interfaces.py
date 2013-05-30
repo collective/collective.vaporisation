@@ -63,7 +63,7 @@ class ICustomizableCloud(IPortletDataProvider):
     type = Tuple(
         title=_(u"Type of contents"),
         description=_(u"Only the objects of this type will be counted."),
-        value_type=Choice(vocabulary='collective.vaporisation.types'),
+        value_type=Choice(vocabulary='plone.app.vocabularies.ReallyUserFriendlyTypes'),
         required=False,
         )
 
