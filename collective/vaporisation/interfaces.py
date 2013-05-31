@@ -10,6 +10,11 @@ from zope.schema import Int, List, Dict, Choice, Bool, Tuple, TextLine
 _ = MessageFactory('collective.vaporisation')
 
 
+class ISearchLinkbase(Interface):
+    def get_base_url():
+        """Get base url to search form.
+        """
+
 class ITreeUpdateEvent(IObjectModifiedEvent):
     """This triggers the rebuilding of the whole tree
     """

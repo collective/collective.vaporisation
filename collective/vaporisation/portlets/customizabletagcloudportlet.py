@@ -1,30 +1,26 @@
 from Acquisition import aq_parent
-
 from DateTime import DateTime
-
-from zope.formlib import form
-from zope.event import notify
-from zope.interface import implements
-from zope.component._api import getAdapter
-
-from plone.memoize import ram
-from plone.app.portlets.portlets import base
-from plone.app.form.validators import null_validator
-
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
-
-from collective.vaporisation.interfaces import ISteamer, ICloudRenderer, \
-                                            IVaporizedCloud, ICustomizableCloud
-from collective.vaporisation.events import TreeUpdateEvent
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from collective.vaporisation import logger
-
-from zope.i18nmessageid import MessageFactory
-_ = MessageFactory('collective.vaporisation')
-
+from collective.vaporisation.events import TreeUpdateEvent
+from collective.vaporisation.interfaces import ICloudRenderer
+from collective.vaporisation.interfaces import ICustomizableCloud
+from collective.vaporisation.interfaces import ISearchLinkbase
+from collective.vaporisation.interfaces import ISteamer
+from collective.vaporisation.interfaces import IVaporizedCloud
+from plone.app.form.validators import null_validator
 from plone.app.form.widgets.uberselectionwidget import UberSelectionWidget
-
+from plone.app.portlets.portlets import base
+from plone.memoize import ram
 from time import time
+from zope.component._api import getAdapter
+from zope.event import notify
+from zope.formlib import form
+from zope.i18nmessageid import MessageFactory
+from zope.interface import implements
+
+_ = MessageFactory('collective.vaporisation')
 
 
 def _cloud_key(method, self):
@@ -120,7 +116,8 @@ class Renderer(base.Renderer):
         super(Renderer, self).__init__(context, request, view, manager, data)
         self.subjects = None
         self.putils = getToolByName(context, 'plone_utils')
-        self.purl = getToolByName(context, 'portal_url')()
+        self.linkbase = ISearchLinkbase(self.context)
+        self.purl = self.linkbase.portlet_base_url()
         self.encoding = self.putils.getSiteEncoding()
         self.portal = self.context.portal_url.getPortalObject()
 
@@ -177,9 +174,10 @@ class Renderer(base.Renderer):
         removable = list()
 
         for tag in tags:
-            base_url = 'cloud_search?portlet=%s&path=%s' % (self.data.__name__,
+            base_url = self.linkbase.removable_base_url()
+            query = 'cloud_search?portlet=%s&path=%s' % (self.data.__name__,
                                                             search_path)
-            query = '%s/%s' % (self.context.absolute_url(), base_url)
+            query = '%s/%s' % (base_url, query)
             tag_url = '&tags:list=%s'
             tags_url = ''.join([tag_url % k
                                  for k in tags
@@ -214,8 +212,7 @@ class Renderer(base.Renderer):
                 portlet_path = '/'+self.portal.getId()+portlet_path
         else:
             portlet_path = '/'+self.portal.getId()
-        portal = getToolByName(self.context, 'portal_url').getPortalObject()
-        link = "%s/cloud_search" % portal.absolute_url()
+        link = self.linkbase.linkpath_base_url()
         portlet = self.request.form.get('portlet', None)
         query = self.request['QUERY_STRING']
         if query and portlet == self.data.__name__:
