@@ -4,10 +4,6 @@ Changelog
 1.3.7 (unreleased)
 ------------------
 
-- Introduce ISearchLinkbase adapter for configurable tagcloud links.
-  [thet]
-
-
 - For the types selection in portlet settings, use reallyuserfriendlytypes from
   plone.app.vocabularies instead own types vocabulary. Own vocabulary didn't
   return metaTypesNotToList.
