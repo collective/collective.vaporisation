@@ -1,35 +1,13 @@
+"""
+Adapters for the tagcloud
+"""
+
 # -*- coding: utf-8 -*-
 from random import shuffle
-from zope.component import adapts
+from zope.component import adapts, getSiteManager
 from zope.interface import implements
 from Products.CMFCore.utils import getToolByName
-from .interfaces import ISteamer, IVaporizedCloud, ISearchLinkbase
-
-
-class SearchLinkbase(object):
-    """Default adapter to retrieve a base url for a calendar view.
-    In this default implementation we use the @@event_listing view as calendar
-    view.
-
-    For method documentation, see interfaces.py.
-    """
-    implements(ISearchLinkbase)
-
-    def __init__(self, context):
-        self.context = context
-        self.urlpart = "cloud_search"
-
-    def removable_base_url(self):
-        ret = "%s/%s" % (self.context.absolute_url(), self.urlpart)
-        return ret
-
-    def linkpath_base_url(self):
-        portal = getToolByName(self.context, 'portal_url').getPortalObject()
-        ret = "%s/cloud_search" % portal.absolute_url()
-        return ret
-
-    def portlet_base_url(self):
-        return self.linkpath_base_url
+from interfaces import ISteamer, IVaporizedCloud
 
 
 class Steamer(object):
