@@ -17,6 +17,7 @@ class Steamer(object):
 
     def __init__(self, context):
         self.context = context
+        self.base_query = {}
 
     def getStepForTag(self, tag):
         """ Only used for display purposes """
@@ -153,13 +154,14 @@ class Steamer(object):
         # Then we transform the keywords into unicode objects
         # And we keep an untouched list of keywords (for the form vocabulary)
         for index in self.context.indexes_to_use:
-            control_query={'path':search_path}
+            control_query={'path': search_path}
             if self.context.type:
-                control_query['portal_type']=self.context.type
+                control_query['portal_type'] = self.context.type
+            control_query.update(self.base_query)
 
-            subjects = [x for x
-                        in catalog.uniqueValuesFor(index)
-                        if catalog.searchResults(index=x, **control_query)]
+            idxs = catalog.uniqueValuesFor(index)
+            subjects = [idx for idx in idxs
+                        if catalog.searchResults(index=idx, **control_query)]
             self.context.all_keys = [unicode(k, encoding) for k in subjects]
             self.context.all_keys.sort()
             self.context.keywords = [k for k in self.context.all_keys]
@@ -173,7 +175,8 @@ class Steamer(object):
             else:
                 keywords = [k.encode(encoding) for k in self.context.keywords
                                 if k not in self.context.restrict]
-            query = control_query.copy()
+            query = {}
+            query.update(control_query)
             query['index'] = keywords
             objects  = catalog(**query)
             keywords = set(keywords)
