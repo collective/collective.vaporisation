@@ -6,6 +6,7 @@ from zope.component import adapts
 from zope.interface import implements
 from Products.CMFCore.utils import getToolByName
 from interfaces import ISteamer, IVaporizedCloud
+from Acquisition import aq_inner
 
 
 class Steamer(object):
@@ -14,7 +15,7 @@ class Steamer(object):
     implements(ISteamer)
 
     def __init__(self, context):
-        self.context = context
+        self.context = aq_inner(context)
         self.base_query = {}
         putils = getToolByName(self.context, 'plone_utils')
         purl = getToolByName(self.context, 'portal_url')
