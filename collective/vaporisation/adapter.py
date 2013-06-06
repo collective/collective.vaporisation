@@ -1,10 +1,8 @@
+"""Adapters for the tagcloud
 """
-Adapters for the tagcloud
-"""
-
 # -*- coding: utf-8 -*-
 from random import shuffle
-from zope.component import adapts, getSiteManager
+from zope.component import adapts
 from zope.interface import implements
 from Products.CMFCore.utils import getToolByName
 from interfaces import ISteamer, IVaporizedCloud
@@ -18,6 +16,17 @@ class Steamer(object):
     def __init__(self, context):
         self.context = context
         self.base_query = {}
+        putils = getToolByName(self.context, 'plone_utils')
+        purl = getToolByName(self.context, 'portal_url')
+        self.encoding = putils.getSiteEncoding()
+
+        root_path= ('/').join(purl.getPortalObject().getPhysicalPath())
+        if self.context.data.startpath:
+            search_path= root_path+self.context.data.startpath
+        else:
+            search_path= root_path
+        self.search_path = search_path
+
 
     def getStepForTag(self, tag):
         """ Only used for display purposes """
@@ -138,23 +147,15 @@ class Steamer(object):
     def setTree(self):
         """ Initialize the cloud """
         catalog = getToolByName(self.context, 'portal_catalog')
-        putils = getToolByName(self.context, 'plone_utils')
-        portalurl = getToolByName(self.context, 'portal_url')
-        encoding = putils.getSiteEncoding()
-
-        self.context.tagsTree = dict()
+        encoding = self.encoding
+        self.context.tagsTree = {}
         weights = {}
-        root_path= ('/').join(portalurl.getPortalObject().getPhysicalPath())
 
-        if self.context.data.startpath:
-            search_path= root_path+self.context.data.startpath
-        else:
-            search_path= root_path
         # First, we get all the keywords used in our portal
         # Then we transform the keywords into unicode objects
         # And we keep an untouched list of keywords (for the form vocabulary)
         for index in self.context.indexes_to_use:
-            control_query={'path': search_path}
+            control_query={'path': self.search_path}
             if self.context.type:
                 control_query['portal_type'] = self.context.type
             control_query.update(self.base_query)
@@ -240,18 +241,13 @@ class Steamer(object):
         @return: a python set of tags in relations, or an empty set
         """
         context = self.context
+        encoding = self.encoding
         catalog = getToolByName(context, 'portal_catalog')
-        root_path= ('/').join(self.context.context.portal_url.getPortalObject().getPhysicalPath())
-
-        if self.context.data.startpath:
-            search_path= root_path+self.context.data.startpath
-        else:
-            search_path= root_path
-
-        results = catalog(Subject={'query':[x.encode('utf8') for x in tags], 'operator':'and'},
-                          path=search_path)
+        results = catalog(Subject={'query': [x.encode(encoding) for x in tags],
+                                   'operator':'and'},
+                          path=self.search_path)
         resTags = []
         for x in results:
-            subjects=[y.decode('utf8') for y in x.Subject]
+            subjects=[y.decode(encoding) for y in x.Subject]
             resTags.extend(subjects)
         return set(resTags)-set(tags)
