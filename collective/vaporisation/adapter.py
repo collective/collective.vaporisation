@@ -6,7 +6,6 @@ from zope.component import adapts
 from zope.interface import implements
 from Products.CMFCore.utils import getToolByName
 from interfaces import ISteamer, IVaporizedCloud
-from Acquisition import aq_inner
 
 
 class Steamer(object):
@@ -15,18 +14,31 @@ class Steamer(object):
     implements(ISteamer)
 
     def __init__(self, context):
-        self.context = aq_inner(context)
-        self.base_query = {}
+        self.context = context
+
+    # Properties
+    # Initialize them as property methods, as on __init__ time, context might
+    # be a PseudoAssignment, from which no plone_utils can be fetched.
+
+    @property
+    def base_query(self):
+        return {}
+
+    @property
+    def encoding(self):
         putils = getToolByName(self.context, 'plone_utils')
+        return putils.getSiteEncoding()
+
+    @property
+    def search_path(self):
         purl = getToolByName(self.context, 'portal_url')
-        self.encoding = putils.getSiteEncoding()
 
         root_path= ('/').join(purl.getPortalObject().getPhysicalPath())
         if self.context.data.startpath:
             search_path= root_path+self.context.data.startpath
         else:
             search_path= root_path
-        self.search_path = search_path
+        return search_path
 
 
     def getStepForTag(self, tag):
