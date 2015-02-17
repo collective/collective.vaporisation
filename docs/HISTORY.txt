@@ -4,6 +4,9 @@ Changelog
 1.3.7 (unreleased)
 ------------------
 
+- Use appendViewAction in Url.
+  [sureshvv]
+
 - In Steamers init method, provide a base_query and search_path attribute for
   easier overriding in custom steamer classes, which derive from the default
   one.
