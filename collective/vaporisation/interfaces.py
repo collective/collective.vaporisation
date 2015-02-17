@@ -1,24 +1,22 @@
 # -*- coding: utf-8 -*-
-
-from zope.schema import Int, List, Dict, Choice, Bool, Tuple, TextLine
-from zope.lifecycleevent.interfaces import IObjectModifiedEvent
-from zope.interface import Interface
-from zope.i18nmessageid import MessageFactory
 from plone.app.vocabularies.catalog import SearchableTextSourceBinder
 from plone.portlets.interfaces import IPortletDataProvider
+from zope.i18nmessageid import MessageFactory
+from zope.interface import Interface
+from zope.lifecycleevent.interfaces import IObjectModifiedEvent
+from zope.schema import Int, List, Dict, Choice, Bool, Tuple, TextLine
 
 
 _ = MessageFactory('collective.vaporisation')
 
 
-class ITreeUpdateEvent( IObjectModifiedEvent ):
-    """
-    This triggers the rebuilding of the whole tree
+class ITreeUpdateEvent(IObjectModifiedEvent):
+    """This triggers the rebuilding of the whole tree
     """
 
-class ICustomizableCloud( IPortletDataProvider ):
-    """
-    Customizable parts of the cloud
+
+class ICustomizableCloud(IPortletDataProvider):
+    """Customizable parts of the cloud
     """
     # Customization
     name = TextLine(
@@ -27,7 +25,7 @@ class ICustomizableCloud( IPortletDataProvider ):
         required=True,
         default=u"Tagcloud"
         )
-    
+
     steps = Int(
         title=_(u"Number of different sizes"),
         description=_(u"This number will also determine the biggest size."),
@@ -41,31 +39,34 @@ class ICustomizableCloud( IPortletDataProvider ):
         required=False,
         default=0
         )
-    
+
     timeout = Int(title=_(u'Cloud reload timeout'),
-        description=_(u'Time in minutes after which the cloud should be reloaded.'),
+        description=_(u'Time in minutes after which the cloud should be '
+                      u'reloaded.'),
         required=True,
         default=100)
-    
+
     startpath = Choice(title=_(u"Start path"),
-                       description=_(u"Only the objects under this directory will be counted. If empty, the portlet will search in all the site."),
-                       required=False,
-                       source=SearchableTextSourceBinder({}, default_query='path:'))
-    
+        description=_(u'Only the objects under this directory will be counted.'
+                      u' If empty, the portlet will search in all the site.'),
+        required=False,
+        source=SearchableTextSourceBinder({}, default_query='path:'))
+
     indexes_to_use = Tuple(
          title=_(u"Indexes to use"),
-         description=_(u"Select from the list the indexes to use for the cloud"),
+         description=_(u"Select from the list the indexes to use for the "
+                       u"cloud"),
          default=('Subject',),
          value_type=Choice(vocabulary='collective.vaporisation.indexes'),
          required=True)
-    
+
     type = Tuple(
         title=_(u"Type of contents"),
         description=_(u"Only the objects of this type will be counted."),
-        value_type=Choice(vocabulary='collective.vaporisation.types'),
+        value_type=Choice(vocabulary='plone.app.vocabularies.ReallyUserFriendlyTypes'),
         required=False,
         )
-    
+
     joint = Bool(
         default=False,
         required=False,
@@ -73,7 +74,7 @@ class ICustomizableCloud( IPortletDataProvider ):
         description=_(u"Joint navigation puts keywords together"
                       u" for associative searches.")
         )
-    
+
     white_list = Tuple(
         required=False,
         title=_(u"Use only the keywords of this list"),
@@ -84,32 +85,34 @@ class ICustomizableCloud( IPortletDataProvider ):
     restrict = Tuple(
         required=False,
         title=_(u"Remove from keywords list"),
-        description=_(u"Restrict the cloud keywords by removing these keywords."
+        description=_(u"Restrict the cloud keywords by removing these "
+                      u"keywords."
                       u"If there is something selected in the list over,"
                       u" the values of that list will be ignored."),
         value_type=Choice(vocabulary='collective.vaporisation.keywords'),
         )
-    
+
     mode_to_use = Choice(
         title=_(u"Mode to use"),
         description=_(u'Select one of the possible mode to use the cloud'),
-        vocabulary= 'collective.vaporisation.use_mode',
+        vocabulary='collective.vaporisation.use_mode',
         required=True,
         default=('default',),
         )
-    
+
     sort = Bool(
         default=True,
         required=False,
         title=_(u"Sort keywords"),
-        description=_(u"If selected, the keywords will be sorted alphabetically.")
+        description=_(u"If selected, the keywords will be sorted "
+                      u"alphabetically.")
         )
-    
+
+
 class IVaporizedCloud(ICustomizableCloud):
+    """A cloudy bunch of keywords
     """
-    A cloudy bunch of keywords
-    """
-    
+
     # storing the tags
     keywords = List(title=u"The list of keywords", default=[])
     all_keys = List(title=u"The list of all the keywords", default=[])
@@ -119,7 +122,7 @@ class IVaporizedCloud(ICustomizableCloud):
     lowest  = Int(title=u"lowest weight", default=10)
     highest = Int(title=u"heighest weight", default=20)
 
-    
+
 class ISteamer(Interface):
     """
     The steamer releases the pression by letting the steam out.
@@ -136,7 +139,7 @@ class ISteamer(Interface):
         If the occurence of the tags is even, they will all be displayed
         at 100%
         """
-    
+
     def getTagsFromTree(self, keywords):
         """
         This method returns a list of dict.
@@ -186,7 +189,7 @@ class ISteamer(Interface):
         the already filled tree. It's not very optimal, but
         it is done only once.
         """
-        
+
     def setTree(self):
         """
         Using the catalog, this method creates a blank tree.
@@ -195,19 +198,19 @@ class ISteamer(Interface):
         properties, such as number of occurences.
         Keywords are stored as unicodes.
         """
- 
 
-class ICloudRenderer( Interface ):
+
+class ICloudRenderer(Interface):
     """
     The cloud renderer provides the methods to display the cloud.
     It will adapt the cloud with a steamer to gets the things out.
     """
-    
+
     def Title(self):
         """
         Returns the name of a tagcloud
         """
-    
+
     def update_tags_tree(self):
         """
         This is the restricted access for a manager to handle his cloud.
@@ -219,7 +222,7 @@ class ICloudRenderer( Interface ):
         """
         default render method
         """
-        
+
     def getVaporizedCloud(self):
         """
         This method return as list of dictionnaries.
@@ -241,7 +244,7 @@ class ICloudRenderer( Interface ):
         The result is an iterable sequence of unicodes.
         """
 
-    def removableTags(self):        
+    def removableTags(self):
         """
         This method return the list of keywords actually selected.
         The result is an iterable sequence of dictionaries :
@@ -253,7 +256,7 @@ class ICloudRenderer( Interface ):
         """
         This method return the complete start path
         """
-    
+
     def getLinkPath(self):
         """
         This method calculates the link that will be used in the cloud HTML

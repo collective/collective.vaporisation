@@ -39,11 +39,6 @@
 	 />
 	 
   <utility
-	 name="collective.vaporisation.types"
-	 component=".vocabularies.TypesVocabularyFactory"
-	 />
-	 
-  <utility
 	 name="collective.vaporisation.use_mode"
 	 component=".vocabularies.ModeVocabularyFactory"
 	 />
