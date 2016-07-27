@@ -1,0 +1,157 @@
+# Translation of collective.vaporisation.pot to Spanish
+# Leonardo J. Caballero G. <leonardocaballero@gmail.com>, 2016.
+msgid ""
+msgstr ""
+"Project-Id-Version: collective.vaporisation\n"
+"POT-Creation-Date: 2012-02-01 14:09+0000\n"
+"PO-Revision-Date: 2016-07-25 21:32-0400\n"
+"Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
+"Language-Team: Spanish Team\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Virtaal 0.7.1\n"
+"Language-Code: es\n"
+"Language-Name: Español\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: collective.vaporisation\n"
+"X-Is-Fallback-For: es-ar es-bo es-cl es-co es-cr es-do es-ec es-es es-sv es-gt es-hn es-mx es-ni es-pa es-py es-pe es-pr es-us es-uy es-ve\n"
+
+#: ./interfaces.py:70
+msgid "Activate joint navigation"
+msgstr "Activar unión de navegación"
+
+#: ./portlets/customizabletagcloudportlet.py:237
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: ./portlets/customizabletagcloudportlet.py:231
+msgid "Changes saved and tagcloud updated."
+msgstr "Cambios guardado y nube de etiqueta actualizadas."
+
+#: ./interfaces.py:43
+msgid "Cloud reload timeout"
+msgstr "Tiempo expirado de recarga de la nube de etiqueta"
+
+#: ./interfaces.py:103
+msgid "If selected, the keywords will be sorted alphabetically."
+msgstr "Si es seleccionado, las palabras claves serán ordenadas de forma alfabética."
+
+#: ./interfaces.py:54
+msgid "Indexes to use"
+msgstr "Índices disponibles"
+
+#: ./interfaces.py:71
+msgid "Joint navigation puts keywords together for associative searches."
+msgstr "Una unión de navegación coloca las palabras claves juntas para buscas asociativas."
+
+#: ./interfaces.py:78
+msgid "List of keywords to use in the cloud"
+msgstr "Lista de palabras claves a usar en la nube."
+
+#: ./interfaces.py:92
+msgid "Mode to use"
+msgstr "Modo a usar"
+
+#: ./interfaces.py:23
+msgid "Name to display"
+msgstr "Título"
+
+#: ./portlets/customizabletagcloudportlet.py:233
+msgid "No changes."
+msgstr "Sin cambios."
+
+#: ./interfaces.py:30
+msgid "Number of different sizes"
+msgstr "Tamaños diferentes"
+
+#: ./interfaces.py:37
+msgid "Number of keywords to display"
+msgstr "Cantidad de palabras claves a mostrar en la nube de etiquetas"
+
+#: ./interfaces.py:62
+msgid "Only the objects of this type will be counted."
+msgstr "Solamente las palabras claves registradas a los tipos de contenidos que serán mostradas."
+
+#: ./interfaces.py:49
+msgid "Only the objects under this directory will be counted. If empty, the portlet will search in all the site."
+msgstr "Solamente las palabras claves bajo este directorio serán presentadas. Si no es seleccionado un directorio, serán buscadas las palabras claves en todo el sitio."
+
+#: ./interfaces.py:84
+msgid "Remove from keywords list"
+msgstr "Remover da lista de palabras claves"
+
+#: ./interfaces.py:85
+msgid "Restrict the cloud keywords by removing these keywords.If there is something selected in the list over, the values of that list will be ignored."
+msgstr "A través de la lista siguiente es posible escoger las palabras claves que NO serán presentadas en la nube de etiqueta. Si alguna palabra clave es seleccionada en la lista de arriba, los valores de esa lista serán ignorados."
+
+#: ./portlets/customizabletagcloudportlet.py:225
+msgid "Save"
+msgstr "Guardar"
+
+#: ./interfaces.py:55
+msgid "Select from the list the indexes to use for the cloud"
+msgstr "Seleccione desde la lista de los índices de los cuales las palabras claves serán usado en la nube de etiqueta."
+
+#: ./interfaces.py:93
+msgid "Select one of the possible mode to use the cloud"
+msgstr "Seleccione uno de los modos disponibles para ser usado en la nube de etiqueta."
+
+#: ./interfaces.py:102
+msgid "Sort keywords"
+msgstr "Clasificar palabras clave"
+
+#: ./interfaces.py:48
+msgid "Start path"
+msgstr "Ruta de referencia"
+
+#: ./interfaces.py:24
+msgid "The name of the tagcloud. For display purposes."
+msgstr "Este título aparecerá en la parte superior de la nube de etiquetas que mostrara las palabras claves, Para propósito de mostrar."
+
+#: ./interfaces.py:31
+msgid "This number will also determine the biggest size."
+msgstr "Este número determina el tamaño mayor de fuente de letra utilizada para presentar las palabras claves en la nube de etiquetas."
+
+#: ./interfaces.py:44
+msgid "Time in minutes after which the cloud should be reloaded."
+msgstr "Tiempo en minutos en el cual la nube debería ser recargada."
+
+#: ./interfaces.py:61
+msgid "Type of contents"
+msgstr "Tipos de contenidos"
+
+#: ./interfaces.py:77
+msgid "Use only the keywords of this list"
+msgstr "Usar solamente las palabras clave de esta lista"
+
+#: ./interfaces.py:38
+msgid "Zero displays it all."
+msgstr "Número 0 mostrara todas las palabras clave."
+
+#. Default: "Joint navigation based on tags (click to remove) :"
+#: ./portlets/cloud.pt:47
+msgid "joint_navigation"
+msgstr "Unión de navegación basada en etiquetas (haga clic para remover) :"
+
+#. Default: "No related tags"
+#: ./portlets/cloud.pt:35
+msgid "no_related_tags"
+msgstr "Sin etiquetas relacionadas"
+
+#. Default: "Actually searching on :"
+#: ./portlets/cloud.pt:61
+msgid "normal_navigation"
+msgstr "Actualmente buscando en :"
+
+#. Default: "Tagcloud portlet"
+#: collective.vaporisation/collective/vaporisation/profiles/default/portlets.xml
+msgid "Tagcloud portlet"
+msgstr "Portlet de nube de etiqueta"
+
+#. Default: "A portlet that displays a cloud of tags to browser through"
+#: collective.vaporisation/collective/vaporisation/profiles/default/portlets.xml
+msgid "A portlet that displays a cloud of tags to browser through"
+msgstr "Un portlet que muestra una nube de etiquetas a través del navegador"
